@@ -1,8 +1,21 @@
+import passport from "../config/passport";
+import isAuthenticated from "../config/isAuthenticated";
 import app from ("express").Router();
 import {Cat, User, Vet, Medication, Daily} from ("../models/index")
 
 //create 
-app.post("/api/cat", ({ body }, res) => {
+//user signup
+app.post("/signup", ({ body }, res) => {
+  User.create(body)
+    .then(dbUser => {
+      res.json(dbUser);
+    })
+    .catch(err => {
+      res.status(400).json(err);
+    });
+});
+//create cat
+app.post("/cat", ({ body }, res) => {
   Cat.create(body)
     .then(dbCat => {
       res.json(dbCat);
@@ -12,17 +25,8 @@ app.post("/api/cat", ({ body }, res) => {
     });
 });
 
-app.post("/api/user", ({ body }, res) => {
-  User.create(body)
-    .then(dbUser => {
-      res.json(dbUser);
-    })
-    .catch(err => {
-      res.status(400).json(err);
-    });
-});
-
-app.post("/api/vet", ({ body }, res) => {
+//create vet app
+app.post("/vet", ({ body }, res) => {
   Vet.create(body)
     .then(dbVet => {
       res.json(dbVet);
@@ -31,8 +35,8 @@ app.post("/api/vet", ({ body }, res) => {
       res.status(400).json(err);
     });
 });
-
-app.post("/api/daily", ({ body }, res) => {
+//create daily log
+app.post("/daily", ({ body }, res) => {
   Daily.create(body)
     .then(dbDaily => {
       res.json(dbDaily);
@@ -41,8 +45,8 @@ app.post("/api/daily", ({ body }, res) => {
       res.status(400).json(err);
     });
 });
-
-app.post("/api/medication", ({ body }, res) => {
+//create medication log
+app.post("/medication", ({ body }, res) => {
   Medication.create(body)
     .then(dbMedication => {
       res.json(dbMedication);
@@ -53,6 +57,19 @@ app.post("/api/medication", ({ body }, res) => {
 });
 
 //read
+// login user
+app.post("/login", (req, res, next) => {
+  passport.authenticate("local"), (req, res) => {
+    const loginUser = {
+      email: req.user.email,
+      id: req.yser.id,
+      name: req.user.name,
+    };
+    res.json(loginUser);
+  }
+})
+
+//get all user data
 app.get("/user/all", (req, res) => {
   db.User.find({}, (err, data) => {
     if (error) {
@@ -62,6 +79,7 @@ app.get("/user/all", (req, res) => {
       }
     });
   });
+//get all cat data
 app.get("/cat/all", (req, res) => {
   db.Cat.find({}, (err, data) => {
     if (error) {
@@ -71,6 +89,7 @@ app.get("/cat/all", (req, res) => {
       }
     });
   });
+//get all medication data
 app.get("/medication/all", (req, res) => {
   db.Medication.find({}, (err, data) => {
     if (error) {
@@ -80,6 +99,7 @@ app.get("/medication/all", (req, res) => {
       }
     });
   });
+// get all daily log data
 app.get("/daily/all", (req, res) => {
   db.Daily.find({}, (err, data) => {
     if (error) {
@@ -89,6 +109,7 @@ app.get("/daily/all", (req, res) => {
       }
     });
   });
+//get all vet data
 app.get("/vet/all", (req, res) => {
   db.Vet.find({}, (err, data) => {
     if (error) {
