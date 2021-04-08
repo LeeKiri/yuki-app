@@ -1,0 +1,23 @@
+{
+  "name": "yuki-app",
+  "version": "1.0.0",
+  "description": "Yuki is an app to support people that want to help stray cats. They can look for local shelters to adopt, search for a vet, watch informational videos or track their foster cats health.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LeeKiri/yuki-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LeeKiri/yuki-app/issues"
+  },
+  "homepage": "https://github.com/LeeKiri/yuki-app#readme",
+  "dependencies": {
+    "mongoose": "^5.12.3"
+  }
+}
