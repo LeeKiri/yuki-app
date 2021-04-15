@@ -1,4 +1,4 @@
-import mongoose from ("mongoose");
+const mongoose = require ("mongoose");
 
 const Schema = mongoose.Schema;
 
@@ -11,12 +11,10 @@ const catSchema = new Schema({
   age: {
     type: Number,
     trim: true,
-    required: "You can enter an estimate here"
   },
   rescue_date: {
     type: Date,
     trim: true,
-    required: "The date is Required"
   },
   catCreated: {
     type: Date,
@@ -24,4 +22,5 @@ const catSchema = new Schema({
   }
 });
 const Cat = mongoose.model("Cat", catSchema);
-export default Cat;
+
+module.exports= Cat;

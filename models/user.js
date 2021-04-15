@@ -1,5 +1,7 @@
-import mongoose from ("mongoose");
-import bcrypt from ("bcryptjs");
+const mongoose = require("mongoose");
+const passport =require ("passport");
+const bcrypt = require("bcryptjs");
+const LocalStrategy = require ("passport-local").Strategy;
 
 const Schema = mongoose.Schema;
 
@@ -7,69 +9,78 @@ const userSchema = new Schema({
   username: {
     type: String,
     trim: true,
-    required: "Username is Required"
   },
 
   password: {
     type: String,
     trim: true,
     required: "Password is Required",
-    validate: [({ length }) => length >= 6, "Password should be longer."]
+    validate: [({ length }) => length >= 6, "Password should be longer."],
   },
 
   email: {
     type: String,
-    unique: true,
-    match: [/.+@.+\..+/, "Please enter a valid e-mail address"]
   },
 
   userCreated: {
     type: Date,
-    default: Date.now
-  }
+    default: Date.now,
+  },
 });
 
-const User = mongoose.model("User", userSchema);
+var User = module.exports = mongoose.model('User', userSchema);
 
-//password hashing with bcrypt
-// User.encryptPassword('anotherSecret', function(err, encryptedValue) {
-//   if (err) {
-//     console.log(err);
-//   } else {
-//     // Do something with encrypted data
-//     console.log('Encrypted password is ' + encryptedValue);
-//   }
-// });
-// // Using promises
-// Demo.encryptPassword('anotherSecret')
-//   .then(function(encryptedValue) {
-//     // Do something with encrypted data
-//     console.log('Encrypted password is ' + encryptedValue);
-//   })
-//   .catch(function(err) {
-//     console.log(err);
-//   });
-// });
+module.exports.createUser = function (newUser, callback) {
+  bcrypt.genSalt(10, function (err, salt) {
+    bcrypt.hash(newUser.password, salt, function (err, hash) {
+      newUser.password = hash;
+      newUser.save(callback);
+    });
+  });
+};
+module.exports.getUserByUsername = function (username, callback) {
+  var query = { username: username };
+  User.findOne(query, callback);
+};
 
-userSchema.pre("save", function(next){
-  if(!this.isModified("password"))
-  return next()
-  bcrypt.hash(this.password, 10, (err, passwordHash) => {
-    if(err)
-    return next(err)
-    this.password = passwordHash;
-    next()
+module.exports.getUserById = function (id, callback) {
+  User.findById(id, callback);
+};
+
+module.exports.comparePassword = function (candidatePassword, hash, callback) {
+  bcrypt.compare(candidatePassword, hash, function (err, isMatch) {
+    if (err) throw err;
+    callback(null, isMatch);
+  });
+};
+
+passport.use(
+  new LocalStrategy(function (username, password, done) {
+    User.getUserByUsername(username, function (err, user) {
+      if (err) throw err;
+      if (!user) {
+        return done(null, false, { message: "Unknown User" });
+      }
+      User.comparePassword(password, user.password, function (err, isMatch) {
+        if (err) throw err;
+        if (isMatch) {
+          return done(null, user);
+        } else {
+          return done(null, false, { message: "Invalid password" });
+        }
+      });
+    });
   })
-})
-userSchema.methods.comparePassword = function(password, cb) {
-  bcrypt.compare(password, this.password, (err, isMatch)=>{
-    if(err)
-    return cb(err);
-    else {
-      if(!isMatch)
-      returncb(null, isMatch);
-      return cb(null, this);
-    }
-  })
-}
-export default User;
+);
+passport.serializeUser(function (user, done) {
+  done(null, user.id);
+});
+
+passport.deserializeUser(function (id, done) {
+  User.getUserById(id, function (err, user) {
+    done(err, user);
+  });
+});
+module.exports= passport;
+
+

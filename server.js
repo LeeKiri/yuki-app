@@ -1,10 +1,10 @@
-import express from ("express");
-import session from ("express-session");
-import passport from ("./config/passport");
-import mongoose from ("mongoose");
+const express = require("express");
+const session = require("express-session");
+const passport= require ("passport");
+const mongoose= require ("mongoose");
+const {Cat, User, Log} = require("./models/index")
 
 const PORT = process.env.PORT || 8080;
-const db = require("./models");
 
 const app = express();
 
@@ -22,10 +22,10 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-require("./routes/api-routes.js")(app);
+app.use(require("./routes/api_routes.js"));
 
 mongoose.connect(
-    process.env.MONGODB_URI || 'mongodb://localhost/workout',
+    process.env.MONGODB_URI || 'mongodb://localhost/cats',
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
@@ -33,6 +33,7 @@ mongoose.connect(
       useFindAndModify: false
     }
   );
+const db = mongoose.connection;
 
 app.listen(PORT, () => {
     console.log(`App running on port ${PORT}!`);

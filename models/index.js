@@ -1,7 +1,5 @@
-import Cat from("./cat.js");
-import User from("./user.js");
-import Vet from("./vet.js");
-import Medication from("./medication.js");
-import Daily from("./daily-log");
+const Cat =require("./cat.js");
+const User =require("./user.js");
+const Log =require("./log.js") ;
 
-export default {Cat, User, Vet, Medication, Daily};
+module.exports = {Cat, User, Log};
