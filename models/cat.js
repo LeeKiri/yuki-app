@@ -1,4 +1,5 @@
-const mongoose = require ("mongoose");
+/* eslint-disable camelcase */
+const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
@@ -6,7 +7,7 @@ const catSchema = new Schema({
   cat_name: {
     type: String,
     trim: true,
-    required: "The cats name is Required"
+    required: "The cats name is Required",
   },
   age: {
     type: Number,
@@ -18,9 +19,9 @@ const catSchema = new Schema({
   },
   catCreated: {
     type: Date,
-    default: Date.now
-  }
+    default: Date.now,
+  },
 });
 const Cat = mongoose.model("Cat", catSchema);
 
-module.exports= Cat;
+module.exports = Cat;

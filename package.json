@@ -11,7 +11,8 @@
     "seed": "node scripts/seedDB.js",
     "install": "cd client && npm install",
     "build": "cd client && npm run build",
-    "heroku-postbuild": "npm run build"
+    "heroku-postbuild": "npm run build",
+    "lint": "eslint **/*.js --quiet"
   },
   "repository": {
     "type": "git",
@@ -38,7 +39,15 @@
     "semantic-ui-react": "^2.0.3"
   },
   "devDependencies": {
+    "chai": "^4.3.4",
+    "chai-http": "^4.3.0",
     "concurrently": "^6.0.2",
-    "if-env": "^1.0.4"
+    "cross-env": "^7.0.3",
+    "eslint": "^7.24.0",
+    "eslint-config-prettier": "^8.2.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "if-env": "^1.0.4",
+    "mocha": "^8.3.2",
+    "prettier": "^2.2.1"
   }
 }

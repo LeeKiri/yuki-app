@@ -1,5 +1,5 @@
-const passport = require("../config/localStrategy");
-const isAuthenticated = require("../config/isAuthenticated");
+const passport = require("../config/configLocalStrategy");
+// const isAuthenticated = require("../config/isAuthenticated");
 const app = require("express").Router();
 const { Cat, User, Log } = require("../models/index");
 
@@ -8,6 +8,16 @@ app.post("/cat", ({ body }, res) => {
   Cat.create(body)
     .then((dbCat) => {
       res.json(dbCat);
+    })
+    .catch((err) => {
+      res.status(400).json(err);
+    });
+});
+
+app.post("/log", ({ body }, res) => {
+  Log.create(body)
+    .then((dbLog) => {
+      res.json(dbLog);
     })
     .catch((err) => {
       res.status(400).json(err);
@@ -36,41 +46,40 @@ app.get("/log", (req, res) => {
   });
 });
 
-// Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
-// how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
-// otherwise send back an error
 // Register User
-app.post("/signup", function (req, res) {
-  var password = req.body.password;
-  var password2 = req.body.password2;
+app.post("/signup", (req, res) => {
+  const password = req.body.password;
+  const password2 = req.body.password2;
 
-  if (password == password2) {
-    var newUser = new User({
+  if (password === password2) {
+    const newUser = new User({
       email: req.body.email,
       username: req.body.username,
       password: req.body.password,
     });
 
-    User.createUser(newUser, function (err, user) {
-      if (err) throw err;
+    User.createUser(newUser, (err, user) => {
+      if (err) {
+        throw err;
+      }
       res.send(user).end();
     });
   } else {
-    res.status(500).send('{errors: "Passwords don\'t match"}').end();
+    res.status(500).send({ errors: "Passwords don't match" }).end();
   }
 });
 // Endpoint to login
-app.post("/login", passport.authenticate("local"), function (req, res) {
+app.post("/login", passport.authenticate("local"), (req, res) => {
   res.send(req.user);
 });
 
 // Endpoint to get current user
-app.get("/user", function (req, res) {
+app.get("/user", (req, res) => {
   res.send(req.user);
 });
 
 // Endpoint to logout
-app.get("/logout", function (req, res) {
+app.get("/logout", (req, res) => {
   req.logout();
   res.send(null);
 });

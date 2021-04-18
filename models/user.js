@@ -1,7 +1,5 @@
 const mongoose = require("mongoose");
-// const passport =require ("passport");
 const bcrypt = require("bcryptjs");
-// const LocalStrategy = require ("passport-local").Strategy;
 
 const Schema = mongoose.Schema;
 
@@ -28,18 +26,18 @@ const userSchema = new Schema({
   },
 });
 
-var User = module.exports = mongoose.model('User', userSchema);
+const User = (module.exports = mongoose.model("User", userSchema));
 
 module.exports.createUser = function (newUser, callback) {
-  bcrypt.genSalt(10, function (err, salt) {
-    bcrypt.hash(newUser.password, salt, function (err, hash) {
+  bcrypt.genSalt(10, (err, salt) => {
+    bcrypt.hash(newUser.password, salt, (err, hash) => {
       newUser.password = hash;
       newUser.save(callback);
     });
   });
 };
 module.exports.getUserByUsername = function (username, callback) {
-  var query = { username: username };
+  const query = { username: username };
   User.findOne(query, callback);
 };
 
@@ -48,11 +46,10 @@ module.exports.getUserById = function (id, callback) {
 };
 
 module.exports.comparePassword = function (candidatePassword, hash, callback) {
-  bcrypt.compare(candidatePassword, hash, function (err, isMatch) {
-    if (err) throw err;
+  bcrypt.compare(candidatePassword, hash, (err, isMatch) => {
+    if (err) {
+      throw err;
+    }
     callback(null, isMatch);
   });
 };
-
-
-
