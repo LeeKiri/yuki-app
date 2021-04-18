@@ -1,7 +1,5 @@
 export const videos = [
-    { video: 
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/_Mr2uOdZj9c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
-    },
+    { video: <iframe width="560" height="315" src="https://www.youtube.com/embed/_Mr2uOdZj9c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> },
     {   video: 
         <iframe width="560" height="315" src="https://www.youtube.com/embed/KHmrh6eQ6EQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     },
@@ -22,7 +20,7 @@ export const videos = [
     },
     {   video: 
         <iframe width="560" height="315" src="https://www.youtube.com/embed/cyCFELu_d7U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    }
+    },
     {   video: 
         <iframe width="560" height="315" src="https://www.youtube.com/embed/jW3R-gHq2K0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     }

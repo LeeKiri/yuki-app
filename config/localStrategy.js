@@ -1,6 +1,6 @@
-const passport =require ("passport");
+const passport = require ("passport");
 const LocalStrategy = require ("passport-local").Strategy;
-// const {Cat, User, Medication, Daily} = require("../models/index")
+const { User } = require("../models/index")
 
 passport.use(
   new LocalStrategy(function (username, password, done) {
@@ -30,4 +30,4 @@ passport.deserializeUser(function (id, done) {
   });
 });
 
-module.exports= passport;
+module.exports = passport;

@@ -1,8 +1,7 @@
 const express = require("express");
 const session = require("express-session");
-const passport= require ("passport");
+const passport= require("./config/localStrategy");
 const mongoose= require ("mongoose");
-const {Cat, User, Log} = require("./models/index")
 
 const PORT = process.env.PORT || 8080;
 
@@ -22,7 +21,7 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(require("./routes/api_routes.js"));
+app.use(require("./routes/apiRoutes.js"));
 
 mongoose.connect(
     process.env.MONGODB_URI || 'mongodb://localhost/cats',

@@ -1,4 +1,4 @@
-const passport = require("../config/passport");
+const passport = require("../config/localStrategy");
 const isAuthenticated = require("../config/isAuthenticated");
 const app = require("express").Router();
 const { Cat, User, Log } = require("../models/index");
@@ -40,7 +40,7 @@ app.get("/log", (req, res) => {
 // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
 // otherwise send back an error
 // Register User
-app.post("/register", function (req, res) {
+app.post("/signup", function (req, res) {
   var password = req.body.password;
   var password2 = req.body.password2;
 
