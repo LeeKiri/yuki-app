@@ -1,14 +1,14 @@
-import "./banner.css";
-
 const Banner = (props) => {
+    console.log(props)
     return ( 
             <div className="row">
                 <div className="col">
                     <div className="bannerimage"
                     style={{
                         
-                        backgroundImage: { props.url },
-                        height: "300px",
+                        background: "linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8))", 
+                        backgroundImage: `url(${props.url})`,
+                        height: "350px",
                         width: "100%",
                         backgroundPosition: "center",
                         backgroundRepeat: "no-repeat",

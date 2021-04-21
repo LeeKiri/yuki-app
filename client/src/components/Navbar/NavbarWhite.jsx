@@ -13,7 +13,7 @@ const Links = () => {
           <Link className="nav-link" to="/">Home</Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link active" aria-current="page" to="/signup">Dashboard</Link>
+          <Link className="nav-link active" aria-current="page" to="/dashboard">Dashboard</Link>
         </li>
         <li className="nav-item">
           <Link className="nav-link" to="/video">Video Library</Link>
