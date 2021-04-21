@@ -6,19 +6,20 @@ const Banner = (props) => {
                     <div className="bannerimage"
                     style={{
                         
-                        background: "linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8))", 
+                        background: "linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.8))", 
                         backgroundImage: `url(${props.url})`,
                         height: "350px",
                         width: "100%",
                         backgroundPosition: "center",
                         backgroundRepeat: "no-repeat",
                         backgroundSize: "cover",
-                        position: "relative"
+                        position: "relative",
+                        marginBottom: "50px"
                         
                     }}
                     ></div>
-                    <h2 style={{ paddingBottom: "150px"}}className="carousel-caption">{props.title}</h2>
-                    <p style={{ paddingBottom: "80px", fontFamily: "serif", fontSize: "20px"}}className="carousel-caption">{props.caption}</p>
+                    <h2 style={{ textShadow: "2px 2px 4px #000000", paddingBottom: "200px"}}className="carousel-caption">{props.title}</h2>
+                    <p style={{ textShadow: "2px 2px 4px #000000", paddingBottom: "120px", fontFamily: "serif", fontSize: "25px"}}className="carousel-caption">{props.caption}</p>
                 </div>
             </div>
      );

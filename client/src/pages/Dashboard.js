@@ -4,7 +4,7 @@ import Banner from "../components/Banner/Banner";
 import catImage from "../images/cats/banner/paws.jpg"
 
 const title = "Dashboard"
-const caption = "Upload images to track significat events along your cats journey, so you can see how far you've come together"
+const caption = "Upload images & track significant events along your journey together."
 
 const Dashboard = () => {
 
