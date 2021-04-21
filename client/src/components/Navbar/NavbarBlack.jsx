@@ -11,10 +11,10 @@ const NavbarBlack = () => {
           <Link className="nav-link active" aria-current="page" to="/signup">Sign-up</Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link" href="/login">Login</Link>
+          <Link className="nav-link" to="/login">Login</Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link" href="/login">Logout</Link>
+          <Link className="nav-link" to="/logout">Logout</Link>
         </li>
       </ul>
     </div>
