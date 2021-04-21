@@ -6,7 +6,7 @@ import videos from "../utils/video"
 import VideoCard from "../components/Video/Video"
 
 const title = "Video Library"
-const caption = "Get advice from our experts on cat psychology to help your cats transition go smoothly."
+const caption = "Advice from cat specialists to help your adoption go smoothly."
 
 const Video = () => {
     return ( 
