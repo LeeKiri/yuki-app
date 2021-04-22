@@ -6,6 +6,7 @@ const Footer = () => {
     return ( 
         <>
         <footer 
+        style={{marginTop: "2%"}}
            className="footer fixed-bottom bg-secondary" id="homeFooter">
             <div    
                 className="card-footer bg-dark footer-font-style footer-position"

@@ -6,7 +6,7 @@ import HomeIntro from "../components/Headings/HomeIntro"
 import HomeCards from "../components/Cards/HomeCard";
 import HomeCardContent from "../utils/homeCardContent"
 import HomePageForm from "../components/Forms/HomePageForm";
-import About from "../components/About";
+import About from "../components/About/About";
 import Footer from "../components/Footer/Footer";
 
 const title = "Welcome To Yuki!"

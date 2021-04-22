@@ -2,12 +2,14 @@ import NavbarWhiteBasic from "../components/Navbar/NavbarWhiteBasic";
 import NavbarBlack from "../components/Navbar/NavbarBlack";
 import Banner from "../components/Banner/Banner";
 import catImage from "../images/cats/banner/cat7.jpg"
-import SignupForm from "../components/Forms/HomePageForm";
+import SignupForm from "../components/Forms/SignupForm";
 import SignupIntro from "../components/Headings/SignupIntro";
 import Footer from "../components/Footer/Footer";
+import SignupCardContent from "../utils/signupCardContent";
+import SignupCards from "../components/Cards/SignupCards"
 
 const title = "Join Today"
-const caption = "In a few simple steps signup to get all of the members benefits and meet our community"
+const caption = "In a few simple steps signup to get our members benefits and meet the community"
 
 const Signup = () => {
     return ( 
@@ -15,14 +17,24 @@ const Signup = () => {
         <NavbarBlack />
         <NavbarWhiteBasic />
         <Banner title={title} caption={caption} url={catImage}/>
-        <div className="container">
+        <div 
+        style={{marginBottom: "110px"}}
+        className="container">
             <div className="row">
                 <div className="col-lg-8">
                     <SignupIntro />
                     <SignupForm />
                 </div>
+                <div className="col-lg-4">
+                <h5
+                style={{paddingLeft: "20px"}}
+                >What do I get?</h5>
+                {SignupCardContent.map((card) => (
+                    <SignupCards cardData={card} />
+                    ))}
+                </div>
             </div>
-        </div>
+        </div>     
         <Footer />
         </>
      );

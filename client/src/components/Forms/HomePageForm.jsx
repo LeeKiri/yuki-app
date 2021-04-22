@@ -1,6 +1,7 @@
 import WhiteButton from "../Button/WhiteButton"
-import { Link } from "react-router-dom"
-const SignupForm = () => {
+import { Link } from "react-router-dom";
+
+const HomePageForm = () => {
     return ( 
        <>
        <div className="container"
@@ -29,4 +30,4 @@ const SignupForm = () => {
      );
 }
  
-export default SignupForm;
+export default HomePageForm;

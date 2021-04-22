@@ -1,8 +1,8 @@
-import yuki1 from "../images/yuki/yuki1.png";
-import yuki2 from "../images/yuki/yuki2.jpg";
-import yuki3 from "../images/yuki/yuki3.jpg";
-import yuki4 from "../images/yuki/yuki4.jpg";
-import yuki5 from "../images/yuki/yuki5.jpg";
+import yuki1 from "../../images/yuki/yuki1.png";
+import yuki2 from "../../images/yuki/yuki2.jpg";
+import yuki3 from "../../images/yuki/yuki3.jpg";
+import yuki4 from "../../images/yuki/yuki4.jpg";
+import yuki5 from "../../images/yuki/yuki5.jpg";
 
 
 const About = () => {
