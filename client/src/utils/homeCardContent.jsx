@@ -10,7 +10,7 @@ const homeCards = [
     },
     {
         title: "Members Dashboard",
-        content: "Track your cats journey. Upload images to doccument their health, track vet appointments and immunisations and look back on moments of significance",
+        content: "Track your cats journey. Upload images to document their health, track vet appointments and immunisations and look back on moments of significance",
         image: Cat2
     },
     {
