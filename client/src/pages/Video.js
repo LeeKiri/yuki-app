@@ -4,6 +4,7 @@ import Banner from "../components/Banner/Banner";
 import catImage from "../images/cats/banner/cat1.jpg"
 import videos from "../utils/video"
 import VideoCard from "../components/Video/Video"
+import Footer from "../components/Footer/Footer";
 
 const title = "Video Library"
 const caption = "Advice from cat specialists to help your adoption go smoothly."
@@ -15,10 +16,13 @@ const Video = () => {
         <NavbarWhite />
         <Banner title={title} caption={caption} url={catImage} />
         {videos.map((vid) => (
-          <VideoCard vidData={vid} />
-        )
-      
-        )}
+          <VideoCard vidData={vid} 
+          style={{ display: "block",
+            marginLeft: "auto",
+            marginRight: "auto"}}
+          />
+        ))}
+        <Footer />
         </>
      );
 }

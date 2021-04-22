@@ -35,7 +35,7 @@ const Home = () => {
         </div>
         <HomePageForm />
         <About />
-            <Footer />
+        <Footer />
         </>
      );
 }

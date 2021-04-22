@@ -1,6 +1,7 @@
 import NavbarBlack from "../components/Navbar/NavbarBlack";
 import NavbarWhite from "../components/Navbar/NavbarWhite";
 import Banner from "../components/Banner/Banner";
+import Footer from "../components/Footer/Footer";
 import catImage from "../images/cats/banner/paws.jpg"
 
 const title = "Dashboard"
@@ -13,6 +14,7 @@ const Dashboard = () => {
         <NavbarBlack />
         <NavbarWhite />
         <Banner title={title} caption={caption} url={catImage}/>
+        <Footer />
         </>
      );
 }
