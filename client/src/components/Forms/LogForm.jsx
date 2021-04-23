@@ -5,7 +5,7 @@ const LogForm = () => {
         <>
         <form>
         <div className="container"
-        style={{backgroundColor: "lightgray", maxWidth: "100%", marginBottom: "200px"}}
+        style={{backgroundColor: "lightgray", maxWidth: "100%", marginBottom: "60px"}}
         >
             <div className="row">
                 <div className="col-lg-3">
@@ -24,7 +24,7 @@ const LogForm = () => {
                 </div>
                 <div className="col-lg-6"> 
                     <h4
-                    style={{textAlign: "center", fontSize: "20px", marginLeft: "45px", marginTop: "10px"}}
+                    style={{textAlign: "center", fontSize: "25px", marginTop: "10px"}}
                     >Create a Log</h4>
                     <div className="inputComments mt-3 ml-5 mb-4">
                         <label for="FormControlTextarea1">Comments</label>
