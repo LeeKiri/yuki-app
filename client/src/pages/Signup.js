@@ -6,12 +6,20 @@ import SignupForm from "../components/Forms/SignupForm";
 import SignupIntro from "../components/Headings/SignupIntro";
 import Footer from "../components/Footer/Footer";
 import SignupCardContent from "../utils/signupCardContent";
-import SignupCards from "../components/Cards/SignupCards"
+import SignupCards from "../components/Cards/SignupCards";
+import { useState } from "react";
+import CatForm from "../components/Forms/CatForm";
+import LoginForm from "../components/Forms/LoginForm";
 
 const title = "Join Today"
 const caption = "In a few simple steps signup to get our members benefits and meet the community"
 
 const Signup = () => {
+    const [formState, setFormState] = useState();
+
+    const onSubmit = () => {
+        
+    }
     return ( 
         <>
         <NavbarBlack />
@@ -23,7 +31,7 @@ const Signup = () => {
             <div className="row">
                 <div className="col-lg-8">
                     <SignupIntro />
-                    <SignupForm />
+                    <SignupForm onSubmit={onsubmit}/>
                 </div>
                 <div className="col-lg-4">
                 <h5
@@ -35,6 +43,8 @@ const Signup = () => {
                 </div>
             </div>
         </div>     
+        <CatForm />
+        <LoginForm />
         <Footer />
         </>
      );
