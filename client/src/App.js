@@ -4,6 +4,7 @@ import Community from "./pages/Community"
 import Video from "./pages/Video"
 import Dashboard from "./pages/Dashboard"
 import Signup from "./pages/Signup"
+import Login from "./pages/Login"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
@@ -20,8 +21,8 @@ function App() {
         <Route path="/signup">
           <Signup />
         </Route>
-        <Route path="/signup">
-          <Signup />
+        <Route path="/login">
+          <Login />
         </Route>
         <Route path="/community">
           <Community />
