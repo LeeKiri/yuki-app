@@ -3,13 +3,13 @@ const LocalStrategy = require("passport-local").Strategy;
 const { User } = require("../models/index");
 
 passport.use(
-  new LocalStrategy((username, password, done) => {
-    User.getUserByUsername(username, (err, user) => {
+  new LocalStrategy((email, password, done) => {
+    User.getUserByEmail(email, (err, user) => {
       if (err) {
         throw err;
       }
       if (!user) {
-        return done(null, false, { message: "Unknown User" });
+        return done(null, false, { message: "Unknown Email" });
       }
       User.comparePassword(password, user.password, (err, isMatch) => {
         if (err) {
