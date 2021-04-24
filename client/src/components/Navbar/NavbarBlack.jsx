@@ -14,7 +14,7 @@ const NavbarBlack = () => {
           <Link className="nav-link" to="/login">Login</Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link" to="/logout">Logout</Link>
+          <Link className="nav-link" to="/">Logout</Link>
         </li>
       </ul>
     </div>

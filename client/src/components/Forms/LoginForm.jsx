@@ -10,10 +10,7 @@ const LoginForm = () => {
             marginBottom: "300px"
         }}
         >
-        <h4>Already a member?</h4>
-        <h5>Login Here</h5>
-        <br />
-            <div className="mb-3">
+                   <div className="mb-3">
                 <label className="form-label">Email</label>
                 <input
                 style={{backgroundColor: "lightgray"}}
