@@ -3,7 +3,13 @@ import "./video.css"
 const VideoCard = ({ vidData: video }) => {
     return ( 
         <>
-        {video.video}
+        <div className="container"  style={{display: "inline-block", margin: "auto"}}>
+            <div className="row">
+                <div className="col-lg-12">
+                    {video.video}
+                </div>
+            </div>
+        </div>
         </>
      );
 }

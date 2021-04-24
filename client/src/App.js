@@ -20,6 +20,9 @@ function App() {
         <Route path="/signup">
           <Signup />
         </Route>
+        <Route path="/signup">
+          <Signup />
+        </Route>
         <Route path="/community">
           <Community />
         </Route>

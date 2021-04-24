@@ -15,13 +15,12 @@ const Video = () => {
         <NavbarBlack />
         <NavbarWhite />
         <Banner title={title} caption={caption} url={catImage} />
+        
         {videos.map((vid) => (
-          <VideoCard vidData={vid} 
-          style={{ display: "block",
-            marginLeft: "auto",
-            marginRight: "auto"}}
+          <VideoCard vidData={vid}
           />
         ))}
+
         <Footer />
         </>
      );
