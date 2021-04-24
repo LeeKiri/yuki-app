@@ -29,7 +29,10 @@ const Dashboard = () => {
         }}
         >History</h5>
         <div className="card-columns"
-        style={{marginBottom: "200px"}}>
+            style={{marginBottom: "200px", columnCount: "4", 
+            height: "fit-content",
+            blockSize: "fit-content"
+        }}>
             <div className="row"> 
                     <RecordImg title="Playtime" date="14/02/2021" comment="today Yuki played a lot and chased the ball around. It as really cute"/>
                     <RecordNoImg />
