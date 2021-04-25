@@ -1,5 +1,4 @@
 const Banner = (props) => {
-    console.log(props)
     return ( 
             <div className="row">
                 <div className="col">

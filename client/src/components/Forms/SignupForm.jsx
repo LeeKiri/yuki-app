@@ -1,4 +1,5 @@
 import BlackButton from "../Button/BlackButton"
+import axios from "axios";
 import { useState } from "react";
 
 const SignupForm = () => {
@@ -9,7 +10,12 @@ const SignupForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(username)
-        
+        const user = {username, email, password}
+        axios.post("/signup", {user})
+        .then(res=> {
+            console.log(res);
+            isSignup = false;     
+        })
     }
     return ( 
         <>
@@ -25,7 +31,7 @@ const SignupForm = () => {
             <div className="mb-3">
                 <label className="form-label" >Username *</label>
                 <input
-                onchange={(e) => setUsername(e.target.value)}
+                onChange={(e) => setUsername(e.target.value)}
                 value={username}
                 style={{backgroundColor: "lightgray"}}
                 type="text" className="form-control" placeholder="Jane Smith" required />
@@ -33,7 +39,7 @@ const SignupForm = () => {
             <div className="mb-3">
                 <label className="form-label">Email address *</label>
                 <input 
-                onchange={(e) => setEmail(e.target.value)}
+                onChange={(e) => setEmail(e.target.value)}
                 value={email}
                 style={{backgroundColor: "lightgray"}}
                 type="text" className="form-control" placeholder="janesmith@gmail.com" required/>
@@ -41,7 +47,7 @@ const SignupForm = () => {
             <div className="mb-3">
                 <label className="form-label">Password * must be more than 6 characters</label>
                 <input 
-                onchange={(e) => setPassword(e.target.value)}
+                onChange={(e) => setPassword(e.target.value)}
                 value={password}
                 style={{backgroundColor: "lightgray"}}
                 type="text" className="form-control" placeholder="password" required/>

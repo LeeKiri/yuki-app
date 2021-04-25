@@ -8,13 +8,12 @@ import Footer from "../components/Footer/Footer";
 import SignupCardContent from "../utils/signupCardContent";
 import SignupCards from "../components/Cards/SignupCards";
 import CatForm from "../components/Forms/CatForm";
-import LoginForm from "../components/Forms/LoginForm";
 
 const title = "Join Today"
 const caption = "In a few simple steps signup to get our members benefits and meet the community"
 
 const Signup = () => {
- let isSignup = false;
+ let isSignup = true;
  
     return ( 
         <>
@@ -40,7 +39,6 @@ const Signup = () => {
             </div>
         </div>     
         <CatForm />
-        <LoginForm />
         <Footer />
         </>
      );
