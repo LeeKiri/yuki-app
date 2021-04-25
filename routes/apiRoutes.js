@@ -47,7 +47,7 @@ app.get("/log", (req, res) => {
 });
 
 // Register User
-app.post("/signup", (req, res) => {
+app.post("/api/signup", (req, res) => {
   const password = req.body.password;
   const password2 = req.body.password2;
 

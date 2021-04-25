@@ -8,13 +8,16 @@ import Footer from "../components/Footer/Footer";
 import SignupCardContent from "../utils/signupCardContent";
 import SignupCards from "../components/Cards/SignupCards";
 import CatForm from "../components/Forms/CatForm";
+import { useState } from "react"
 
 const title = "Join Today"
 const caption = "In a few simple steps signup to get our members benefits and meet the community"
+ 
+
 
 const Signup = () => {
- let isSignup = true;
- 
+const [signup, setSignup] = useState(true) 
+
     return ( 
         <>
         <NavbarBlack />
@@ -26,7 +29,7 @@ const Signup = () => {
             <div className="row">
                 <div className="col-lg-8">
                     <SignupIntro />
-                    {isSignup ? <SignupForm /> : <CatForm />}
+                    {signup ? <SignupForm setSignup={setSignup}/> : <CatForm />}
                 </div>
                 <div className="col-lg-4">
                 <h5
@@ -38,7 +41,6 @@ const Signup = () => {
                 </div>
             </div>
         </div>     
-        <CatForm />
         <Footer />
         </>
      );

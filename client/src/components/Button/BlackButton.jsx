@@ -3,7 +3,7 @@ const BlackButton = (props) => {
         <>
         <button 
             style={{ borderRadius: "40px", width: "180px", marginRight: "20px", marginTop: "20px", padding: "8px" }}
-            type="button" 
+            type="submit" 
             className="btn btn-dark">
             {props.title}
         </button>
