@@ -15,7 +15,6 @@ const catSchema = new Schema({
   },
   rescue_date: {
     type: Date,
-    trim: true,
   },
   catCreated: {
     type: Date,

@@ -11,8 +11,6 @@ const SignupForm = ({setSignup}) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         const user = {username, email, password, password2}
-        console.log(user)
-        alert("click")
         axios.post("/api/signup", user)
         .then(res=> {
             console.log(res);
@@ -52,15 +50,15 @@ const SignupForm = ({setSignup}) => {
                 onChange={(e) => setPassword(e.target.value)}
                 value={password}
                 style={{backgroundColor: "lightgray"}}
-                type="text" className="form-control" placeholder="password" required/>
+                type="password" className="form-control" placeholder="password" required/>
             </div>
             <div className="mb-3">
-                <label className="form-label">Confirm Password * must be more than 6 characters</label>
+                <label className="form-label">Confirm Password *</label>
                 <input 
                 onChange={(e) => setPassword2(e.target.value)}
                 value={password2}
                 style={{backgroundColor: "lightgray"}}
-                type="text" className="form-control" placeholder="password" required/>
+                type="password" className="form-control" placeholder="password" required/>
             </div>
              <BlackButton title="submit" />
                 <label style={{float: "right", verticalAlign: "center"}} className="form-label">* Required Fields</label>

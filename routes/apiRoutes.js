@@ -5,12 +5,13 @@ const { Cat, User, Log } = require("../models/index");
 
 //create cat
 app.post("/cat", ({ body }, res) => {
-  Cat.create(body)
+  const cat = body;
+  Cat.create(cat)
     .then((dbCat) => {
       res.json(dbCat);
     })
     .catch((err) => {
-      res.status(400).json(err);
+      res.json(err);
     });
 });
 

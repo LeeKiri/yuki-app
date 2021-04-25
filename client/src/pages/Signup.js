@@ -24,7 +24,7 @@ const [signup, setSignup] = useState(true)
         <NavbarWhiteBasic />
         <Banner title={title} caption={caption} url={catImage}/>
         <div 
-        style={{marginBottom: "110px"}}
+        style={{marginBottom: "200px"}}
         className="container">
             <div className="row">
                 <div className="col-lg-8">
