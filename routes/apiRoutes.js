@@ -70,7 +70,7 @@ app.post("/api/signup", (req, res) => {
   }
 });
 // Endpoint to login
-app.post("/login", passport.authenticate("local"), (req, res) => {
+app.post("/api/login", passport.authenticate("local"), (req, res) => {
   res.send(req.user);
 });
 
