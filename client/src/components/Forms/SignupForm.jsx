@@ -2,19 +2,21 @@ import BlackButton from "../Button/BlackButton"
 import axios from "axios";
 import { useState } from "react";
 
-const SignupForm = () => {
+const SignupForm = ({setSignup}) => {
     const [username, setUsername] = useState()
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
+    const [password2, setPassword2] = useState()
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(username)
-        const user = {username, email, password}
-        axios.post("/signup", {user})
+        const user = {username, email, password, password2}
+        console.log(user)
+        alert("click")
+        axios.post("/api/signup", user)
         .then(res=> {
             console.log(res);
-            isSignup = false;     
+            setSignup(false)
         })
     }
     return ( 
@@ -49,6 +51,14 @@ const SignupForm = () => {
                 <input 
                 onChange={(e) => setPassword(e.target.value)}
                 value={password}
+                style={{backgroundColor: "lightgray"}}
+                type="text" className="form-control" placeholder="password" required/>
+            </div>
+            <div className="mb-3">
+                <label className="form-label">Confirm Password * must be more than 6 characters</label>
+                <input 
+                onChange={(e) => setPassword2(e.target.value)}
+                value={password2}
                 style={{backgroundColor: "lightgray"}}
                 type="text" className="form-control" placeholder="password" required/>
             </div>

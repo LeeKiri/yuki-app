@@ -5,8 +5,9 @@ import Footer from "../components/Footer/Footer";
 import catImage from "../images/cats/banner/paws.jpg"
 import DashboardIntro from "../components/Headings/DashboardIntro";
 import LogForm from "../components/Forms/LogForm";
-import RecordImg from "../components/Records/RecordImg";
-import RecordNoImg from "../components/Records/RecordNoImg";
+import RecordImg from "../components/Cards/Records/RecordImg";
+import RecordNoImg from "../components/Cards/Records/RecordNoImg";
+import Container from "../components/Container/Container";
 
 const title = "Dashboard"
 const caption = "Upload images & track significant events along your journey together."
@@ -28,12 +29,8 @@ const Dashboard = () => {
             marginBottom: "50px"
         }}
         >History</h5>
-        <div className="card-columns"
-            style={{marginBottom: "200px", columnCount: "4", 
-            height: "fit-content",
-            blockSize: "fit-content"
-        }}>
-            <div className="row"> 
+           <Container 
+           >
                     <RecordImg title="Playtime" date="14/02/2021" comment="today Yuki played a lot and chased the ball around. It as really cute"/>
                     <RecordNoImg />
                     <RecordImg title="Playtime" date="14/02/2021" comment="today Yuki played a lot and chased the ball around. It as really cute"/>
@@ -44,8 +41,7 @@ const Dashboard = () => {
                     <RecordNoImg />
                     <RecordImg title="Playtime" date="14/02/2021" comment="today Yuki played a lot and chased the ball around. It as really cute"/>
                     <RecordNoImg />
-            </div>
-        </div>
+            </Container>
         <Footer />
         </>
      );
