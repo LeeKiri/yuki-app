@@ -5,6 +5,7 @@ import Video from "./pages/Video"
 import Dashboard from "./pages/Dashboard"
 import Signup from "./pages/Signup"
 import Login from "./pages/Login"
+import ChatRoom from "./pages/ChatRoom"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
@@ -26,6 +27,9 @@ function App() {
         </Route>
         <Route path="/community">
           <Community />
+        </Route>
+        <Route path="/chatroom">
+          <ChatRoom />
         </Route>
         <Route exact path="/">
           <Home />

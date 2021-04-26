@@ -5,7 +5,7 @@ import Footer from "../components/Footer/Footer";
 import catImage from "../images/cats/banner/cat9.jpg";
 import CommunityIntro from "../components/Headings/CommunityIntro";
 import CommunityCard from "../components/Cards/CommunityCard";
-import CommunityChat from "../components/CommunityChat/CommunityChat";
+import JoinChatBox from "../components/CommunityChat/JoinChatBox";
 import cardImage from "../images/cats/cat3.jpg";
 import Container from "../components/Container/Container";
 
@@ -39,7 +39,7 @@ const Community = () => {
             <li>{x}</li>
           ))}
         />
-        <CommunityChat />
+        <JoinChatBox />
       </Container>
       <Footer />
     </>

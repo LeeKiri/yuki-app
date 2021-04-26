@@ -2,10 +2,17 @@ const express = require("express");
 const session = require("express-session");
 const passport = require("./config/configLocalStrategy");
 const mongoose = require("mongoose");
+const http = require("http");
+const socketio = require("socket.io");
 
 const PORT = process.env.PORT || 8080;
 
 const app = express();
+const server = http.createServer(app);
+const io = socketio(server);
+io.on("connection", socket => {
+  console.log("new socket.io connection...");
+});
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
