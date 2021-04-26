@@ -1,4 +1,4 @@
-const DashboardIntro = () => {
+const DashboardIntro = (props) => {
     return ( 
         <>
         <div 
@@ -8,7 +8,7 @@ const DashboardIntro = () => {
                 <div className="col-lg-12">
                     <h3 
                         style={{  textAlign: "center", fontSize: "25px"}}>
-                        Welcome To The Members Dashboard</h3>
+                        Welcome To The Members Dashboard {props.name}</h3>
                         <p 
                         style={{textAlign: "center", marginTop: "20px" }}>
                         The dashboard is a place to track and view significant events in your cats journey. Here are some examples of events you might log.

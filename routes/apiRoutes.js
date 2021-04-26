@@ -1,5 +1,5 @@
 const passport = require("../config/configLocalStrategy");
-// const isAuthenticated = require("../config/isAuthenticated");
+const isAuthenticated = require("../config/isAuthenticated");
 const app = require("express").Router();
 const { Cat, User, Log } = require("../models/index");
 
@@ -25,8 +25,8 @@ app.post("/log", ({ body }, res) => {
     });
 });
 
-//get all cat data
-app.get("/cat/all", (req, res) => {
+//get cat data
+app.get("/api/cat", isAuthenticated, (req, res) => {
   Cat.find({}, (err, data) => {
     if (error) {
       res.send(error);
@@ -37,7 +37,7 @@ app.get("/cat/all", (req, res) => {
 });
 
 // get all log data
-app.get("/log", (req, res) => {
+app.get("/log", isAuthenticated, (req, res) => {
   Daily.find({}, (err, data) => {
     if (error) {
       res.send(error);
@@ -80,8 +80,13 @@ app.post("/api/login", passport.authenticate("local"), (req, res) => {
 });
 
 // Endpoint to get current user
-app.get("/user", (req, res) => {
-  res.send(req.user);
+app.get("/api/user", isAuthenticated, (req, res) => {
+  if (!req.user) {
+    res.json({});
+  } else {
+    console.log("res on server", req.user);
+    res.json(req.user);
+  }
 });
 
 // Endpoint to logout

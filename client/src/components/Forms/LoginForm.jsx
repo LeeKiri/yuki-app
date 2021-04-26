@@ -9,9 +9,7 @@ const LoginForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         alert("clicked")
-        const user = {email, password}
-        console.log(user)
-        
+        const user = {email, password}        
         axios.post("/api/login", user)
         .then(res => {
             console.log(res);
