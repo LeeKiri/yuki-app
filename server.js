@@ -23,7 +23,7 @@ app.use(passport.session());
 
 app.use(require("./routes/apiRoutes.js"));
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/cats", {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/yuki", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,

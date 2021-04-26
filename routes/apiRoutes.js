@@ -1,18 +1,8 @@
+/* eslint-disable camelcase */
 const passport = require("../config/configLocalStrategy");
-// const isAuthenticated = require("../config/isAuthenticated");
+const isAuthenticated = require("../config/isAuthenticated");
 const app = require("express").Router();
-const { Cat, User, Log } = require("../models/index");
-
-//create cat
-app.post("/cat", ({ body }, res) => {
-  Cat.create(body)
-    .then((dbCat) => {
-      res.json(dbCat);
-    })
-    .catch((err) => {
-      res.status(400).json(err);
-    });
-});
+const { User, Log } = require("../models/index");
 
 app.post("/log", ({ body }, res) => {
   Log.create(body)
@@ -24,19 +14,8 @@ app.post("/log", ({ body }, res) => {
     });
 });
 
-//get all cat data
-app.get("/cat/all", (req, res) => {
-  Cat.find({}, (err, data) => {
-    if (error) {
-      res.send(error);
-    } else {
-      res.json(data);
-    }
-  });
-});
-
 // get all log data
-app.get("/log", (req, res) => {
+app.get("/log", isAuthenticated, (req, res) => {
   Daily.find({}, (err, data) => {
     if (error) {
       res.send(error);
@@ -56,6 +35,8 @@ app.post("/api/signup", (req, res) => {
       email: req.body.email,
       username: req.body.username,
       password: req.body.password,
+      cat_name: req.body.catName,
+      adoption_date: req.body.adoptionDate,
     });
 
     User.createUser(newUser, (err, user) => {
@@ -69,13 +50,23 @@ app.post("/api/signup", (req, res) => {
   }
 });
 // Endpoint to login
-app.post("/login", passport.authenticate("local"), (req, res) => {
-  res.send(req.user);
+app.post("/api/login", passport.authenticate("local"), (req, res) => {
+  const loginUser = {
+    email: req.body.email,
+    password: req.body.password,
+  };
+  res.send(loginUser);
+  console.log(loginUser, " authenticated");
 });
 
 // Endpoint to get current user
-app.get("/user", (req, res) => {
-  res.send(req.user);
+app.get("/api/user", isAuthenticated, (req, res) => {
+  if (!req.user) {
+    res.json({});
+  } else {
+    console.log("res on server", req.user);
+    res.json(req.user);
+  }
 });
 
 // Endpoint to logout
