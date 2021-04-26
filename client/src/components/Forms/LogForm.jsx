@@ -1,6 +1,6 @@
 import BlackButton from "../Button/BlackButton"
 
-const LogForm = ({catName}) => {
+const LogForm = ({ catName }) => {
     return ( 
         <>
         <form>
