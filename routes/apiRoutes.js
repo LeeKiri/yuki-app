@@ -71,7 +71,12 @@ app.post("/api/signup", (req, res) => {
 });
 // Endpoint to login
 app.post("/api/login", passport.authenticate("local"), (req, res) => {
-  res.send(req.user);
+  const loginUser = {
+    email: req.body.email,
+    password: req.body.password,
+  };
+  res.send(loginUser);
+  console.log(loginUser, " authenticated");
 });
 
 // Endpoint to get current user

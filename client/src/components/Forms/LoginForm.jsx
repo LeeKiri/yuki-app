@@ -11,9 +11,11 @@ const LoginForm = () => {
         alert("clicked")
         const user = {email, password}
         console.log(user)
+        
         axios.post("/api/login", user)
         .then(res => {
             console.log(res);
+            window.location = "/dashboard";
         })
     }
     return (  
