@@ -1,19 +1,8 @@
+/* eslint-disable camelcase */
 const passport = require("../config/configLocalStrategy");
 const isAuthenticated = require("../config/isAuthenticated");
 const app = require("express").Router();
-const { Cat, User, Log } = require("../models/index");
-
-//create cat
-app.post("/cat", ({ body }, res) => {
-  const cat = body;
-  Cat.create(cat)
-    .then((dbCat) => {
-      res.json(dbCat);
-    })
-    .catch((err) => {
-      res.json(err);
-    });
-});
+const { User, Log } = require("../models/index");
 
 app.post("/log", ({ body }, res) => {
   Log.create(body)
@@ -23,17 +12,6 @@ app.post("/log", ({ body }, res) => {
     .catch((err) => {
       res.status(400).json(err);
     });
-});
-
-//get cat data
-app.get("/api/cat", isAuthenticated, (req, res) => {
-  Cat.find({}, (err, data) => {
-    if (error) {
-      res.send(error);
-    } else {
-      res.json(data);
-    }
-  });
 });
 
 // get all log data
@@ -57,6 +35,8 @@ app.post("/api/signup", (req, res) => {
       email: req.body.email,
       username: req.body.username,
       password: req.body.password,
+      cat_name: req.body.catName,
+      adoption_date: req.body.adoptionDate,
     });
 
     User.createUser(newUser, (err, user) => {

@@ -8,7 +8,6 @@ const LoginForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        alert("clicked")
         const user = {email, password}        
         axios.post("/api/login", user)
         .then(res => {

@@ -2,32 +2,34 @@ import BlackButton from "../Button/BlackButton"
 import axios from "axios";
 import { useState } from "react";
 
-const SignupForm = ({setSignup}) => {
+const SignupForm = () => {
     const [username, setUsername] = useState()
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
     const [password2, setPassword2] = useState()
+    const [catName, setCatname] = useState();
+    const [adoptionDate, setAdoptionDate] = useState();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const user = {username, email, password, password2}
+        const user = {username, email, catName, adoptionDate, password, password2}
         axios.post("/api/signup", user)
         .then(res=> {
             console.log(res);
-            setSignup(false)
+            window.location = "/login";
         })
     }
     return ( 
         <>
+        <div className="col-lg-8">
         <form 
         onSubmit={handleSubmit}
         style={{
             width: "60%",
-            margin: "auto"
+            margin: "auto",
+            marginBottom: "200px"
         }}
         >
-        <h5>Sign-up now</h5>
-        <br />
             <div className="mb-3">
                 <label className="form-label" >Username *</label>
                 <input
@@ -43,6 +45,22 @@ const SignupForm = ({setSignup}) => {
                 value={email}
                 style={{backgroundColor: "lightgray"}}
                 type="text" className="form-control" placeholder="janesmith@gmail.com" required/>
+            </div>
+            <div className="mb-3">
+                <label className="form-label">Cats Name</label>
+                <input 
+                onChange={(e) => setCatname(e.target.value)}
+                value={catName}
+                style={{backgroundColor: "lightgray"}}
+                type="text" className="form-control" placeholder="Fluffy" required/>
+            </div>
+            <div className="mb-3">
+                <label className="form-label">Adoption Date</label>
+                <input 
+                onChange={(e) => setAdoptionDate(e.target.value)}
+                value={adoptionDate}
+                style={{backgroundColor: "lightgray"}}
+                type="date" className="form-control" placeholder="14/07/2021" required/>
             </div>
             <div className="mb-3">
                 <label className="form-label">Password * must be more than 6 characters</label>
@@ -62,8 +80,8 @@ const SignupForm = ({setSignup}) => {
             </div>
              <BlackButton title="submit" />
                 <label style={{float: "right", verticalAlign: "center"}} className="form-label">* Required Fields</label>
-
         </form>
+        </div>
         </>
      );
 }

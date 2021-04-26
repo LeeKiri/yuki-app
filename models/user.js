@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 
@@ -8,18 +9,23 @@ const userSchema = new Schema({
     type: String,
     trim: true,
   },
-
   password: {
     type: String,
     trim: true,
     required: "Password is Required",
-    // validate: [({ length }) => length >= 6, "Password should be longer."],
+    validate: [({ length }) => length >= 6, "Password should be longer."],
   },
-
   email: {
     type: String,
+    trim: true,
   },
-
+  cat_name: {
+    type: String,
+    trim: true,
+  },
+  adoption_date: {
+    type: Date,
+  },
   userCreated: {
     type: Date,
     default: Date.now,

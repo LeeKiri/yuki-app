@@ -25,19 +25,11 @@ const Dashboard = () => {
       .get("/api/user")
       .then((results) => {
         setUsername(results.data.username);
+        setCatname(results.data.cat_name);
       })
       .catch((err) => console.log(err));
   }, []);
 
-  useEffect(() => {
-    axios
-      .get("/api/cat")
-      .then((results) => {
-        console.log(results);
-        setCatname(results.cat_name)
-      })
-      .catch((err) => console.log(err));
-  }, []);
 
 //   useEffect(() => {
 //     axios

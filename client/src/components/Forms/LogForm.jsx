@@ -1,6 +1,6 @@
 import BlackButton from "../Button/BlackButton"
 
-const LogForm = () => {
+const LogForm = ({catName}) => {
     return ( 
         <>
         <form>
@@ -25,7 +25,7 @@ const LogForm = () => {
                 <div className="col-lg-6"> 
                     <h4
                     style={{textAlign: "center", fontSize: "25px", marginTop: "10px"}}
-                    >Create a Log</h4>
+                    >Create a Log for {catName}</h4>
                     <div className="inputComments mt-3 ml-5 mb-4">
                         <label for="FormControlTextarea1">Comments</label>
                         <textarea class="form-control" id="logComments" rows="5"></textarea>
