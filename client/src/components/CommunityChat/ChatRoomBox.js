@@ -6,6 +6,7 @@ import { useParams } from "react-router";
 const ChatRoomBox = (props) => {
   const { roomId } = useParams();
   const { messages, sendMessage } = useChat(roomId);
+
   const [newMessage, setNewMessage] = useState("");
 
   const handleNewMessageChange = (e) => {
@@ -13,6 +14,8 @@ const ChatRoomBox = (props) => {
   };
 
   const handleSendMessage = () => {
+    alert("clicked");
+    console.log("newMessage", newMessage);
     sendMessage(newMessage);
     setNewMessage("");
   };
@@ -24,17 +27,32 @@ const ChatRoomBox = (props) => {
           width: "100%",
           height: "500px",
           backgroundColor: "lightgray",
-          mozBoxShadow: "inset 0 0 10px #000000",
+          MozBoxShadow: "inset 0 0 10px #000000",
           webkitBoxShadow: "inset 0 0 10px #000000",
           boxShadow: "inset 0 0 10px #000000",
           marginBottom: "200px",
           margin: "auto",
         }}
       >
-        <h4 className="roomName" style={{ paddingLeft: "50px", paddingTop: "50px"}}>
+        <h4
+          className="roomName"
+          style={{ paddingLeft: "50px", paddingTop: "50px" }}
+        >
           Welcome to the {roomId} chat room
         </h4>
         <h5 style={{ paddingLeft: "50px" }}>Please introduce yourself</h5>
+        <form onSubmit={handleSendMessage}>
+          <textarea
+            value={newMessage}
+            onChange={handleNewMessageChange}
+            placeholder="Write your message here...."
+            className="newMessageInputField"
+            style={{ marginLeft: "50px", padding: "20px", width: "80%" }}
+          />
+          <div style={{ paddingLeft: "50px" }}>
+            <BlackButton title="Send" />
+          </div>
+        </form>
         <div className="messagesContainer">
           <ol className="messagesList">
             {messages.map((message, i) => (
@@ -49,16 +67,6 @@ const ChatRoomBox = (props) => {
             ))}
           </ol>
         </div>
-        <textarea
-          value={newMessage}
-          onChange={handleNewMessageChange}
-          placeholder="Write your message here...."
-          className="newMessageInputField"
-          style={{marginLeft: "50px", padding: "20px", width: "80%"}}
-        />
-        <div style={{paddingLeft: "50px"}}>
-        <BlackButton title="Send" onClick={handleSendMessage} />
-         </div>
       </div>
     </div>
   );
