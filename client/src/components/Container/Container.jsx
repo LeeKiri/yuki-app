@@ -6,7 +6,6 @@ const Container = (props) => {
             {props.children}
           </div>
         </div>
-      )}
     </>
   );
 };
