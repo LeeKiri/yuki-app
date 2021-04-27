@@ -2,10 +2,12 @@ const express = require("express");
 const session = require("express-session");
 const passport = require("./config/configLocalStrategy");
 const mongoose = require("mongoose");
-const http = require("http").createServer();
+const app = express();
+const http = require("http").Server(app);
 const io = require("socket.io")(http, {
   cors: {
-    origin: "*",
+    origin: "http://localhost:3000",
+    methods: "*",
   },
 });
 
@@ -13,7 +15,6 @@ const io = require("socket.io")(http, {
 const PORT = process.env.PORT || 8080;
 
 //middleware
-const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
@@ -47,7 +48,7 @@ const NEW_CHAT_MESSAGE_EVENT = "newChatMessage";
 io.on("connection", (socket) => {
   const { roomId } = socket.handshake.query;
   socket.join(roomId);
-
+  console.log("this is server");
   socket.on(NEW_CHAT_MESSAGE_EVENT, (data) => {
     io.in(roomId).emit(NEW_CHAT_MESSAGE_EVENT, data);
   });
@@ -57,6 +58,6 @@ io.on("connection", (socket) => {
   });
 });
 
-app.listen(PORT, () => {
+http.listen(PORT, () => {
   console.log(`App running on port ${PORT}!`);
 });
