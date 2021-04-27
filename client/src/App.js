@@ -25,10 +25,10 @@ function App() {
         <Route path="/login">
           <Login />
         </Route>
-        <Route path="/community">
+        <Route path="/community" >
           <Community />
         </Route>
-        <Route path="/chatroom">
+        <Route path="/chatroom/:roomId">
           <ChatRoom />
         </Route>
         <Route exact path="/">

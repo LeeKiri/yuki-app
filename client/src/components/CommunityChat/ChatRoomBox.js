@@ -1,9 +1,11 @@
 import useChat from "./UseChat";
 import { useState } from "react";
 import WhiteButton from "../Button/WhiteButton";
+import { useParams } from "react-router";
 
 const ChatRoomBox = (props) => {
-    const { roomId } = props.match.params;
+    const { roomId } = useParams();
+    console.log("from chat", roomId)
      const { messages, sendMessage } = useChat(roomId);
      const [newMessage, setNewMessage] = useState("");
 

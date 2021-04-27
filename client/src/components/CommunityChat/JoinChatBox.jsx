@@ -1,17 +1,28 @@
 import BlackButton from "../Button/BlackButton";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useState } from "react";
 
-const CommunityChat = () => {
-  const [roomName, setRoomName] = useState();
+const defaultRoom = "general";
 
-const handleRoomChange = (e) => {
-  setRoomName(e.target.value);
-}
+const CommunityChat = () => {
+  const [roomName, setRoomName] = useState(defaultRoom);
+  const history = useHistory();
+
+  const handleRoomChange = (e) => {
+    console.log(e.target.value)
+    setRoomName(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    history.push(`/chatroom/${roomName}`);
+  };
+
   return (
     <>
       <div className="col-lg-8">
         <div
+          className="chatBox"
           style={{
             backgroundColor: "lightgray",
             marginLeft: "100px",
@@ -32,49 +43,47 @@ const handleRoomChange = (e) => {
           </div>
           <div className="row">
             <div
-              className="col-lg-12"
+              className="col-lg-12 form-container"
               style={{
                 display: "flex",
                 justifyContent: "center",
                 paddingTop: "40px",
               }}
             >
-              <label for="cars" style={{ padding: "10px", fontSize: "20px" }}>
-                Choose a Room:
-              </label>
-
-              <select
-                style={{
-                  width: "150px",
-                  padding: "15px",
-                  border: "none",
-                  height: "50px",
-                  boxShadow:
-                    "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19",
-                }}
-                className="roomInput"
-                name="Rooms"
-                value={roomName}
-                onChange={handleRoomChange}
-              >
-
-                <option value="General Chat">General Chat</option>
-                <option value="Health">Health</option>
-                <option value="Socializing">Socializing</option>
-                <option value="Diet">Diet</option>
-              </select>
+              <form onSubmit={handleSubmit}>
+                <label for="cars" style={{ padding: "10px", fontSize: "20px" }}>
+                  Choose a Room:
+                </label>
+                <select
+                  style={{
+                    width: "150px",
+                    padding: "15px",
+                    border: "none",
+                    height: "50px",
+                    boxShadow:
+                      "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19",
+                  }}
+                  className="roomInput"
+                  name="Rooms"
+                  value={roomName}
+                  onChange={handleRoomChange}
+                >
+                  <option value="general">General</option>
+                  <option value="health">Health</option>
+                  <option value="socializing">Socializing</option>
+                  <option value="diet">Diet</option>
+                </select>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    paddingTop: "20px",
+                  }}
+                >
+                  <BlackButton title="Join Room" />
+                </div>
+              </form>
             </div>
-          </div>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              paddingTop: "20px",
-            }}
-          >
-            <Link to={`/chatroom/${roomName}`}>
-              <BlackButton title="Join Room" />
-            </Link>
           </div>
         </div>
       </div>
