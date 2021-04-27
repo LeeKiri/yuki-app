@@ -2,6 +2,7 @@ const express = require("express");
 const session = require("express-session");
 const passport = require("./config/configLocalStrategy");
 const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
 
 const PORT = process.env.PORT || 8080;
 
@@ -22,6 +23,12 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(require("./routes/apiRoutes.js"));
+
+//image upload with Multer
+app.use("/uploads", express.static("uploads"));
+app.use("/image", ImageRouter);
+app.use(bodyParser.json({ limit: "50mb" }));
+app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/yuki", {
   useNewUrlParser: true,
