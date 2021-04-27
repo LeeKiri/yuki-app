@@ -1,22 +1,21 @@
 import useChat from "./UseChat";
 import { useState } from "react";
-import WhiteButton from "../Button/WhiteButton";
+import BlackButton from "../Button/BlackButton";
 import { useParams } from "react-router";
 
 const ChatRoomBox = (props) => {
-    const { roomId } = useParams();
-    console.log("from chat", roomId)
-     const { messages, sendMessage } = useChat(roomId);
-     const [newMessage, setNewMessage] = useState("");
+  const { roomId } = useParams();
+  const { messages, sendMessage } = useChat(roomId);
+  const [newMessage, setNewMessage] = useState("");
 
-    const handleNewMessageChange = (e) => {
-        setNewMessage(e.target.value);
-    }
+  const handleNewMessageChange = (e) => {
+    setNewMessage(e.target.value);
+  };
 
-     const handleSendMessage = () => {
-         sendMessage(newMessage);
-         setNewMessage("");
-     }
+  const handleSendMessage = () => {
+    sendMessage(newMessage);
+    setNewMessage("");
+  };
 
   return (
     <div className="col-lg-12">
@@ -32,28 +31,34 @@ const ChatRoomBox = (props) => {
           margin: "auto",
         }}
       >
-          <h4 className="roomName">Room: {roomId}</h4>
-          <div className="messagesContainer">
-              <ol className="messagesList">
-                  {messages.map((message, i) => (
-                      <li
-                      key={i}
-                      className={`messageItem ${
-                          message.ownedByCurrentUser ? "myMessage" : "recievedMessage"
-                      }`}
-                      >
-                          {message.body}
-                      </li>
-                  ))}
-              </ol>
-          </div>
+        <h4 className="roomName" style={{ paddingLeft: "50px", paddingTop: "50px"}}>
+          Welcome to the {roomId} chat room
+        </h4>
+        <h5 style={{ paddingLeft: "50px" }}>Please introduce yourself</h5>
+        <div className="messagesContainer">
+          <ol className="messagesList">
+            {messages.map((message, i) => (
+              <li
+                key={i}
+                className={`messageItem ${
+                  message.ownedByCurrentUser ? "myMessage" : "recievedMessage"
+                }`}
+              >
+                {message.body}
+              </li>
+            ))}
+          </ol>
+        </div>
         <textarea
-        value={newMessage}
-        onChange={handleNewMessageChange}
-        placeholder="Write your message here...."
-        className="newMessageInputField"
+          value={newMessage}
+          onChange={handleNewMessageChange}
+          placeholder="Write your message here...."
+          className="newMessageInputField"
+          style={{marginLeft: "50px", padding: "20px", width: "80%"}}
         />
-        <WhiteButton title="Send" onClick={handleSendMessage}/>
+        <div style={{paddingLeft: "50px"}}>
+        <BlackButton title="Send" onClick={handleSendMessage} />
+         </div>
       </div>
     </div>
   );
