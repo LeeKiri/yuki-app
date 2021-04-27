@@ -12,9 +12,8 @@ const logSchema = new Schema({
     trim: true,
   },
 
-  img: {
-    data: Buffer,
-    contentType: String,
+  image: {
+    type: String,
   },
 
   logCreated: {

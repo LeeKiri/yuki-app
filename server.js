@@ -10,6 +10,7 @@ const io = require("socket.io")(http, {
     methods: "*",
   },
 });
+const bodyParser = require("body-parser");
 
 //port
 const PORT = process.env.PORT || 8080;
@@ -35,6 +36,12 @@ app.use(passport.session());
 app.use(require("./routes/apiRoutes.js"));
 
 //mongoose connection
+//image upload with Multer
+app.use("/uploads", express.static("uploads"));
+app.use("/image", ImageRouter);
+app.use(bodyParser.json({ limit: "50mb" }));
+app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
+
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/yuki", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
