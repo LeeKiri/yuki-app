@@ -8,13 +8,17 @@ const imageSchema = new Schema({
     trim: true,
   },
 
-  comments: {
+  description: {
     type: String,
     trim: true,
   },
 
   image: {
     type: String,
+  },
+
+  date: {
+    type: Date,
   },
 
   created_at: {

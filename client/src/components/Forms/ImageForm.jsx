@@ -13,9 +13,9 @@ const ImageForm = ({ catName }) => {
 
         let imageFormObj = new FormData();
         imageFormObj.append("title", title);
-        await imageFormObj.append("description", description);
-        await imageFormObj.append("date", date);
-        await imageFormObj.append("imageData", imageData);
+        imageFormObj.append("description", description);
+        imageFormObj.append("date", date);
+        imageFormObj.append("imageData", imageData);
 
         await axios({
             method: "post",
