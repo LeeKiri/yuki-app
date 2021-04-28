@@ -35,7 +35,6 @@ const SignupForm = () => {
                 <label className="form-label" >Username *</label>
                 <input
                 onChange={(e) => setUsername(e.target.value)}
-                value={username}
                 style={{backgroundColor: "lightgray"}}
                 type="text" className="form-control" placeholder="Jane Smith" required />
             </div>
@@ -43,7 +42,6 @@ const SignupForm = () => {
                 <label className="form-label">Email address *</label>
                 <input 
                 onChange={(e) => setEmail(e.target.value)}
-                value={email}
                 style={{backgroundColor: "lightgray"}}
                 type="text" className="form-control" placeholder="janesmith@gmail.com" required/>
             </div>
@@ -51,7 +49,6 @@ const SignupForm = () => {
                 <label className="form-label">Cats Name</label>
                 <input 
                 onChange={(e) => setCatname(e.target.value)}
-                value={catName}
                 style={{backgroundColor: "lightgray"}}
                 type="text" className="form-control" placeholder="Fluffy" required/>
             </div>
@@ -59,7 +56,6 @@ const SignupForm = () => {
                 <label className="form-label">Adoption Date</label>
                 <input 
                 onChange={(e) => setAdoptionDate(e.target.value)}
-                value={adoptionDate}
                 style={{backgroundColor: "lightgray"}}
                 type="date" className="form-control" placeholder="14/07/2021" required/>
             </div>
@@ -67,7 +63,6 @@ const SignupForm = () => {
                 <label className="form-label">Password * must be more than 6 characters</label>
                 <input 
                 onChange={(e) => setPassword(e.target.value)}
-                value={password}
                 style={{backgroundColor: "lightgray"}}
                 type="password" className="form-control" placeholder="password" required/>
             </div>
@@ -75,7 +70,6 @@ const SignupForm = () => {
                 <label className="form-label">Confirm Password *</label>
                 <input 
                 onChange={(e) => setPassword2(e.target.value)}
-                value={password2}
                 style={{backgroundColor: "lightgray"}}
                 type="password" className="form-control" placeholder="password" required/>
             </div>
