@@ -35,13 +35,13 @@ app.use(passport.session());
 //routes set
 app.use(require("./routes/apiRoutes.js"));
 
-//mongoose connection
 //image upload with Multer
 app.use("/uploads", express.static("uploads"));
 app.use("/image", ImageRouter);
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 
+//mongoose connection
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/yuki", {
   useNewUrlParser: true,
   useUnifiedTopology: true,

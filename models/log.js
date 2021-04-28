@@ -1,7 +1,8 @@
+/* eslint-disable camelcase */
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const logSchema = new Schema({
+const imageSchema = new Schema({
   title: {
     type: String,
     trim: true,
@@ -16,24 +17,12 @@ const logSchema = new Schema({
     type: String,
   },
 
-  logCreated: {
+  created_at: {
     type: Date,
     default: Date.now,
   },
 });
-// const multer = require("multer");
 
-// const storage = multer.diskStorage({
-//   destination: (req, file, cb) => {
-//     cb(null, "uploads");
-//   },
-//   filename: (req, file, cb) => {
-//     cb(null, file.fieldname + "-" + Date.now());
-//   },
-// });
-
-// const upload = multer({ storage: storage });
-
-const Daily = mongoose.model("Log", logSchema);
+const Daily = mongoose.model("Image", imageSchema);
 
 module.exports = Daily;
