@@ -8,7 +8,7 @@ const storage = multer.diskStorage({
     cb(null, "./uploads/");
   },
   filename: function (req, file, cb) {
-    cb(null, Date.now() + file.origionalname);
+    cb(null, `${Date.now()}-${file.originalname}`);
   },
 });
 
@@ -30,13 +30,14 @@ const upload = multer({
 
 imageRouter.post(
   "/api/upload",
-  isAuthenticated,
+  // isAuthenticated,
   upload.single("imageData"),
   (req, res, cb) => {
     console.log(req.body);
     const newImage = new Image({
       title: req.body.title,
       description: req.body.description,
+      date: req.body.date,
       imageData: req.file.path,
     });
 

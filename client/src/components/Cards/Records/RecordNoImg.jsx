@@ -18,7 +18,7 @@ const RecordImg = () => {
               backgroundColor: "lightgray",
             }}
           >
-            <medium>14/07/2021</medium>
+            <small>14/07/2021</small>
           </div>
         </div>
       </div>

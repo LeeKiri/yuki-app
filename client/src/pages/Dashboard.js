@@ -4,7 +4,7 @@ import Banner from "../components/Banner/Banner";
 import Footer from "../components/Footer/Footer";
 import catImage from "../images/cats/banner/paws.jpg";
 import DashboardIntro from "../components/Headings/DashboardIntro";
-import LogForm from "../components/Forms/ImageForm";
+import ImageForm from "../components/Forms/ImageForm";
 import RecordImg from "../components/Cards/Records/RecordImg";
 // import RecordNoImg from "../components/Cards/Records/RecordNoImg";
 import Container from "../components/Container/Container";
@@ -35,7 +35,7 @@ const Dashboard = () => {
       <NavbarWhite />
       <Banner title={title} caption={caption} url={catImage} />
       <DashboardIntro name={userName} />
-      <LogForm catName={catName} />
+      <ImageForm catName={catName} />
       {/* render all logs in record cards */}
       <h5
         style={{

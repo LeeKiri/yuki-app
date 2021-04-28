@@ -29,7 +29,6 @@ const LoginForm = () => {
                 <label className="form-label">Email</label>
                 <input
                  onChange={(e) => setEmail(e.target.value.trim())}
-                 value={email}
                 style={{backgroundColor: "lightgray"}}
                 type="text" className="form-control" placeholder="Enter Email" />
             </div>
@@ -37,7 +36,6 @@ const LoginForm = () => {
                 <label className="form-label">Password</label>
                 <input 
                  onChange={(e) => setPassword(e.target.value.trim())}
-                 value={password}
                 style={{backgroundColor: "lightgray"}}
                 type="text" className="form-control" placeholder="Enter password" />
             </div>

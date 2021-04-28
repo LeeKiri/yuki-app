@@ -34,7 +34,7 @@ app.use(passport.session());
 
 //routes set
 app.use(require("./routes/apiRoutes.js"));
-app.use("/image", require("./routes/imageRoute.js"));
+app.use(require("./routes/imageRoute.js"));
 
 //image upload with Multer
 app.use("/uploads", express.static("uploads"));
