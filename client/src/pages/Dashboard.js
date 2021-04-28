@@ -4,21 +4,20 @@ import Banner from "../components/Banner/Banner";
 import Footer from "../components/Footer/Footer";
 import catImage from "../images/cats/banner/paws.jpg";
 import DashboardIntro from "../components/Headings/DashboardIntro";
-import LogForm from "../components/Forms/LogForm";
+import LogForm from "../components/Forms/ImageForm";
 import RecordImg from "../components/Cards/Records/RecordImg";
-import RecordNoImg from "../components/Cards/Records/RecordNoImg";
+// import RecordNoImg from "../components/Cards/Records/RecordNoImg";
 import Container from "../components/Container/Container";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
 const title = "Dashboard";
 const caption =
-  "Upload images & track significant events along your journey together.";
+  "Upload images to track significant events along your journey together.";
 
 const Dashboard = () => {
   const [userName, setUsername] = useState();
   const [catName, setCatname] = useState();
-  const [logs, setLogs] = useState();
 
   useEffect(() => {
     axios
@@ -30,16 +29,6 @@ const Dashboard = () => {
       .catch((err) => console.log(err));
   }, []);
 
-
-//   useEffect(() => {
-//     axios
-//       .get("/api/log")
-//       .then((results) => {
-//         console.log(results);
-//         setLogs(results);
-//       })
-//       .catch((err) => console.log(err));
-//   }, []);
   return (
     <>
       <NavbarBlack />
@@ -55,10 +44,10 @@ const Dashboard = () => {
           marginBottom: "50px",
         }}
       >
-        History
+        Gallery
       </h5>
       <Container>
-       logs={logs}
+        <RecordImg />
       </Container>
       <Footer />
     </>

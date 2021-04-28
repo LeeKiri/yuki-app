@@ -75,25 +75,4 @@ app.get("/logout", (req, res) => {
   res.send(null);
 });
 
-// route to post Image and log
-// app.post('/log', upload.single('image'), (req, res, next) => {
-
-//   var obj = {
-//       title: req.body.name,
-//       comments: req.body.comments,
-//       img: {
-//           data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename)),
-//           contentType: 'image/png'
-//       }
-//   }
-//   Log.create(obj, (err, item) => {
-//       if (err) {
-//           console.log(err);
-//       }
-//       else {
-//           // item.save();
-//           res.redirect('/');
-//       }
-//   });
-// });
 module.exports = app;
