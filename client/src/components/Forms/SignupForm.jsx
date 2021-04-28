@@ -11,6 +11,7 @@ const SignupForm = () => {
     const [adoptionDate, setAdoptionDate] = useState();
 
     const handleSubmit = (e) => {
+        alert("clicked")
         e.preventDefault();
         const user = {username, email, catName, adoptionDate, password, password2}
         axios.post("/api/signup", user)
