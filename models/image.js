@@ -6,15 +6,25 @@ const imageSchema = new Schema({
   title: {
     type: String,
     trim: true,
+    required: "Title is required",
   },
 
-  comments: {
+  description: {
     type: String,
     trim: true,
   },
 
   image: {
     type: String,
+  },
+
+  date: {
+    type: Date,
+  },
+
+  user_id: {
+    type: String,
+    required: true,
   },
 
   created_at: {

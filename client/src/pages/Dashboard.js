@@ -4,7 +4,7 @@ import Banner from "../components/Banner/Banner";
 import Footer from "../components/Footer/Footer";
 import catImage from "../images/cats/banner/paws.jpg";
 import DashboardIntro from "../components/Headings/DashboardIntro";
-import LogForm from "../components/Forms/ImageForm";
+import ImageForm from "../components/Forms/ImageForm";
 import RecordImg from "../components/Cards/Records/RecordImg";
 // import RecordNoImg from "../components/Cards/Records/RecordNoImg";
 import Container from "../components/Container/Container";
@@ -18,6 +18,7 @@ const caption =
 const Dashboard = () => {
   const [userName, setUsername] = useState();
   const [catName, setCatname] = useState();
+  const [userId, setUserId] = useState();
 
   useEffect(() => {
     axios
@@ -25,6 +26,7 @@ const Dashboard = () => {
       .then((results) => {
         setUsername(results.data.username);
         setCatname(results.data.cat_name);
+        setUserId(results.data._id)
       })
       .catch((err) => console.log(err));
   }, []);
@@ -35,7 +37,7 @@ const Dashboard = () => {
       <NavbarWhite />
       <Banner title={title} caption={caption} url={catImage} />
       <DashboardIntro name={userName} />
-      <LogForm catName={catName} />
+      <ImageForm catName={catName} userId={userId}/>
       {/* render all logs in record cards */}
       <h5
         style={{
