@@ -1,21 +1,29 @@
+import Moment from "react-moment";
+
 const RecordImg = ({ title, description, date, image }) => {
   return (
     <>
-      <div className="card m-2" style={{ width: "15rem", 
-    height: "fit-content"}}>
-        <img className="card-img-top" src={image} alt="users cat" />
-        <div className="card-body">
-          <h5 className="card-title">{title}</h5>
-          <p className="card-text">
-            {description}
-          </p>
-          <div
-            className="card-footer"
-            style={{
-              backgroundColor: "lightgray",
-            }}
-          >
-            <small>{date}</small>
+      <div style={{ width: "80%", margin: "20px" }} className="card">
+        <div className="row no-gutters">
+          <div className="col-4">
+            <img
+              style={{ width: "200px" }}
+              src={image}
+              alt="thumbnail record"
+              class="img-thumbnail img-fluid"
+            />
+          </div>
+          <div className="col-8">
+            <div 
+            className="card-header">{title}</div>
+            <div className="card-body">
+              <p className="card-text">{description}</p>
+              <footer>
+                <small>
+                  <Moment format="DD-MM-YYYY">{date}</Moment>
+                </small>
+              </footer>
+            </div>
           </div>
         </div>
       </div>

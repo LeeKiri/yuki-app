@@ -3,7 +3,7 @@ import NavbarWhite from "../components/Navbar/NavbarWhite";
 import Banner from "../components/Banner/Banner";
 import DashboardIntro from "../components/Headings/DashboardIntro";
 import ImageForm from "../components/Forms/ImageForm";
-import RecordImg from "../components/Cards/Records/RecordImage";
+import RecordImage from "../components/Cards/Records/RecordImage";
 import RecordNoImg from "../components/Cards/Records/RecordNoImage";
 import Container from "../components/Container/Container";
 import Footer from "../components/Footer/Footer";
@@ -60,9 +60,9 @@ const Dashboard = () => {
       <Container>
         {records && records.map((x) => (
           x.image ?
-        <RecordImg key={x._id} title={x.title} description= {x.description} image={x.image} date={x.date} />
+        <RecordImage key={x._id} title={x.title} description= {x.description} image={x.image} date={x.date} />
         :
-        <RecordNoImg key={x._id} title={x.title} description= {x.description} date={x.date} />
+        <RecordNoImg key={x._id} title={x.title} description= {x.description} date={x.date}/>
         ))
   
         }
