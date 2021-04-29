@@ -50,7 +50,7 @@ imageRouter.post(
         User.findByIdAndUpdate(
           { _id: req.user._id },
           { $push: { images: result._id } }
-        ).then((data) => {
+        ).then(() => {
           res.status(200).json({
             success: true,
             document: result,

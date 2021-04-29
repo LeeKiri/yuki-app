@@ -2,14 +2,7 @@
 const passport = require("../config/configLocalStrategy");
 const isAuthenticated = require("../config/isAuthenticated");
 const app = require("express").Router();
-const { User, Image } = require("../models/index");
-
-// get all image data
-app.get("/api/records/:id", isAuthenticated, (req, res) => {
-  Image.find({ user_id: req.params.id }).then((data) => {
-    res.json(data);
-  });
-});
+const { User } = require("../models/index");
 
 // Register User
 app.post("/api/signup", (req, res) => {
