@@ -25,6 +25,7 @@ const ImageForm = ({ catName, userId }) => {
       .then((data) => {
         if (data.data.success) {
           alert("file successfully uploaded");
+          //todo: workout how to update records without page reload
           window.location.reload();
         }
       })
