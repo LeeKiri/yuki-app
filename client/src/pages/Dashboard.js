@@ -19,17 +19,24 @@ const Dashboard = () => {
   const [userName, setUsername] = useState();
   const [catName, setCatname] = useState();
   const [userId, setUserId] = useState();
+  const [records, setRecords] = useState();
 
   useEffect(() => {
+    loadUser()
+  }, []);
+  
+  const loadUser=() => {
     axios
       .get("/api/user")
       .then((results) => {
         setUsername(results.data.username);
         setCatname(results.data.cat_name);
         setUserId(results.data._id)
+        console.log(results.data)
       })
       .catch((err) => console.log(err));
-  }, []);
+    
+  }
 
   return (
     <>

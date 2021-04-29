@@ -2,26 +2,12 @@
 const passport = require("../config/configLocalStrategy");
 const isAuthenticated = require("../config/isAuthenticated");
 const app = require("express").Router();
-const { User, Log } = require("../models/index");
+const { User, Image } = require("../models/index");
 
-app.post("/log", ({ body }, res) => {
-  Log.create(body)
-    .then((dbLog) => {
-      res.json(dbLog);
-    })
-    .catch((err) => {
-      res.status(400).json(err);
-    });
-});
-
-// get all log data
-app.get("/log", isAuthenticated, (req, res) => {
-  Daily.find({}, (err, data) => {
-    if (error) {
-      res.send(error);
-    } else {
-      res.json(data);
-    }
+// get all image data
+app.get("/api/records/:id", isAuthenticated, (req, res) => {
+  Image.find({ user_id: req.params.id }).then((data) => {
+    res.json(data);
   });
 });
 
@@ -64,8 +50,13 @@ app.get("/api/user", isAuthenticated, (req, res) => {
   if (!req.user) {
     res.json({});
   } else {
+    User.findById({ _id: req.user.id })
+      .populate("images")
+      .then((data) => {
+        res.json(data);
+      });
     console.log("res on server", req.user);
-    res.json(req.user);
+    // res.json(req.user);
   }
 });
 
