@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-const { Image } = require("../models/index");
+const { Image, User } = require("../models/index");
 const multer = require("multer");
 const imageRouter = require("express").Router();
 const isAuthenticated = require("../config/isAuthenticated");
@@ -40,16 +40,21 @@ imageRouter.post(
       description: req.body.description,
       date: req.body.date,
       user_id: req.body.userId,
-      imageData: req.file.path,
+      image: req.file.path,
     });
 
     newImage
       .save()
       .then((result) => {
         console.log(result);
-        res.status(200).json({
-          success: true,
-          document: result,
+        User.findByIdAndUpdate(
+          { _id: req.user._id },
+          { $push: { images: result._id } }
+        ).then(() => {
+          res.status(200).json({
+            success: true,
+            document: result,
+          });
         });
       })
       .catch((err) => cb(err));

@@ -30,6 +30,12 @@ const userSchema = new Schema({
     type: Date,
     default: Date.now,
   },
+  images: [
+    {
+      type: mongoose.Types.ObjectId,
+      ref: "Image",
+    },
+  ],
 });
 
 const User = (module.exports = mongoose.model("User", userSchema));

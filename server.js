@@ -22,9 +22,8 @@ app.use(express.static("public"));
 app.use(
   session({
     secret: "keyboard cat",
-    resave: true,
-    saveUninitialized: true,
-    cookie: { maxAge: 36000000 },
+    resave: false,
+    saveUninitialized: false,
   })
 );
 
