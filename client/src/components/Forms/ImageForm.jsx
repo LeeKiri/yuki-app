@@ -25,6 +25,7 @@ const ImageForm = ({ catName, userId }) => {
       .then((data) => {
         if (data.data.success) {
           alert("file successfully uploaded");
+          window.location.reload();
         }
       })
       .catch((err) => {
