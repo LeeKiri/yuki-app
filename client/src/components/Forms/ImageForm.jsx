@@ -2,7 +2,7 @@ import BlackButton from "../Button/BlackButton";
 import axios from "axios";
 import { useState } from "react";
 
-const ImageForm = ({ catName }) => {
+const ImageForm = ({ catName, userId }) => {
   const [imageData, setImageData] = useState();
   const [title, setTitle] = useState();
   const [description, setDescription] = useState();
@@ -13,6 +13,7 @@ const ImageForm = ({ catName }) => {
     imageFormObj.append("title", title);
     imageFormObj.append("description", description);
     imageFormObj.append("date", date);
+    imageFormObj.append("userId", userId);
     imageFormObj.append("imageData", imageData);
 
     await axios({

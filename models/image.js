@@ -6,6 +6,7 @@ const imageSchema = new Schema({
   title: {
     type: String,
     trim: true,
+    required: "Title is required",
   },
 
   description: {
@@ -19,6 +20,11 @@ const imageSchema = new Schema({
 
   date: {
     type: Date,
+  },
+
+  user_id: {
+    type: String,
+    required: true,
   },
 
   created_at: {

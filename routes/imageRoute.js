@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 const { Image } = require("../models/index");
 const multer = require("multer");
 const imageRouter = require("express").Router();
@@ -38,6 +39,7 @@ imageRouter.post(
       title: req.body.title,
       description: req.body.description,
       date: req.body.date,
+      user_id: req.body.userId,
       imageData: req.file.path,
     });
 
