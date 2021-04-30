@@ -31,7 +31,7 @@ const upload = multer({
 
 imageRouter.post(
   "/api/upload",
-  // isAuthenticated,
+  isAuthenticated,
   upload.single("imageData"),
   (req, res, cb) => {
     const newImage = new Image({
