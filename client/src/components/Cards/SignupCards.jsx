@@ -1,7 +1,6 @@
 const SignupCard = ({ cardData: card }) => {
   return (
     <>
-        <h5 style={{ paddingLeft: "20px" }}>What do I get?</h5>
         <div
           className="card"
           style={{
@@ -10,6 +9,7 @@ const SignupCard = ({ cardData: card }) => {
             display: "inline-block",
             verticalAlign: "top",
             margin: "20px",
+            marginTop: "10px",
           }}
         >
           <img src={card.image} className="card-img-top" alt="" />

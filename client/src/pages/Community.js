@@ -1,13 +1,13 @@
 import NavbarBlack from "../components/Navbar/NavbarBlack";
 import NavbarWhite from "../components/Navbar/NavbarWhite";
 import Banner from "../components/Banner/Banner";
-import Footer from "../components/Footer/Footer";
 import catImage from "../images/cats/banner/cat9.jpg";
 import CommunityIntro from "../components/Headings/CommunityIntro";
 import CommunityCard from "../components/Cards/CommunityCard";
 import JoinChatBox from "../components/CommunityChat/JoinChatBox";
 import cardImage from "../images/cats/cat3.jpg";
 import Container from "../components/Container/Container";
+import Footer from "../components/Footer/Footer";
 
 const title = "Community";
 const caption =

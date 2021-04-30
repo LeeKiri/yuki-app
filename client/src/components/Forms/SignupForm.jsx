@@ -27,7 +27,6 @@ const SignupForm = () => {
   };
   return (
     <>
-      <div className="col-lg-8">
         <form
           onSubmit={handleSubmit}
           style={{
@@ -112,7 +111,6 @@ const SignupForm = () => {
             * Required Fields
           </label>
         </form>
-      </div>
     </>
   );
 };

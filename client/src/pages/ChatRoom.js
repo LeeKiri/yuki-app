@@ -6,16 +6,34 @@ import catImage from "../images/cats/banner/catcommunity.jpg";
 import Container from "../components/Container/Container";
 import ChatRoomBox from "../components/CommunityChat/ChatRoomBox";
 
+import { useEffect, useState } from "react";
+import axios from "axios";
+
 const title = "Community";
 
 const ChatRoom = () => {
+  const [userName, setUserName] = useState();
+
+useEffect(() => {
+ loadUser()
+}, []);
+
+  const loadUser = () => {
+    axios
+      .get("/api/user")
+      .then((results) => {
+        setUserName(results.data.username);
+    
+      })
+      .catch((err) => console.log(err));
+  };
   return (
     <>
       <NavbarBlack />
       <NavbarWhite />
       <Banner title={title} url={catImage} />
       <Container>
-          <ChatRoomBox />
+          <ChatRoomBox userName={userName}/>
       </Container>
       <Footer />
     </>

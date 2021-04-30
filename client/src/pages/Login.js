@@ -29,8 +29,8 @@ const Login = () => {
                 <h5
                 style={{paddingLeft: "20px"}}
                 >Members Benefits</h5>
-                {SignupCardContent.map((card) => (
-                    <SignupCards cardData={card} />
+                {SignupCardContent.map((card, i) => (
+                    <SignupCards cardData={card} key={i} />
                     ))}
                 </div>
             </div>

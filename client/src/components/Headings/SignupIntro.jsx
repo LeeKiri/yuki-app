@@ -1,7 +1,7 @@
+
 const SignupIntro = () => {
   return (
     <>
-      <div className="col-lg-8">
         <div style={{ width: "60%", margin: "auto" }}>
           <h3 style={{ textAlign: "left", fontSize: "25px" }}>
             Join us today!
@@ -14,7 +14,6 @@ const SignupIntro = () => {
             community and get tracking!
           </p>
         </div>
-      </div>
     </>
   );
 };
