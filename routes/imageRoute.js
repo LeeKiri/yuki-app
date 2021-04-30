@@ -34,7 +34,6 @@ imageRouter.post(
   // isAuthenticated,
   upload.single("imageData"),
   (req, res, cb) => {
-    console.log(req.body);
     const newImage = new Image({
       title: req.body.title,
       description: req.body.description,
@@ -46,7 +45,6 @@ imageRouter.post(
     newImage
       .save()
       .then((result) => {
-        console.log(result);
         User.findByIdAndUpdate(
           { _id: req.user._id },
           { $push: { images: result._id } }

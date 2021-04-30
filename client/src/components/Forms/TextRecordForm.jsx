@@ -2,25 +2,22 @@ import BlackButton from "../Button/BlackButton";
 import axios from "axios";
 import { useState } from "react";
 
-const ImageForm = ({ catName, userId }) => {
-  const [imageData, setImageData] = useState();
+const TextRecordForm = ({ catName, userId }) => {
   const [title, setTitle] = useState();
   const [description, setDescription] = useState();
   const [date, setDate] = useState();
 
-  const uploadImage = (e) => {
+  const uploadText = (e) => {
     let imageFormObj = new FormData();
     imageFormObj.append("title", title);
     imageFormObj.append("description", description);
     imageFormObj.append("date", date);
     imageFormObj.append("userId", userId);
-    imageFormObj.append("imageData", imageData);
 
      axios({
       method: "post",
-      url: "/api/upload",
+      url: "/api/upload/text",
       data: imageFormObj,
-      headers: { "Content-Type": "multipart/form-data" },
     })
       .then((data) => {
         if (data.data.success) {
@@ -37,7 +34,7 @@ const ImageForm = ({ catName, userId }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await uploadImage();
+    uploadText();
   };
   return (
     <>
@@ -82,7 +79,7 @@ const ImageForm = ({ catName, userId }) => {
                   marginTop: "10px",
                 }}
               >
-                Create A Visual Record For {catName}
+                Create A Text Record For {catName}
               </h4>
               <div className="inputComments mt-3 ml-5 mb-4">
                 <label htmlFor="FormControlTextarea1">Description</label>
@@ -94,19 +91,8 @@ const ImageForm = ({ catName, userId }) => {
                 ></textarea>
               </div>
             </div>
-            <div className="col-lg-3">
-              <div className="inputImage mt-5 mr-4 mb-4">
-                <label className="form-label mt-2" htmlFor="multerFile">
-                  Upload an image
-                </label>
-                <input
-                  onChange={(e) => setImageData(e.target.files[0])}
-                  type="file"
-                  id="image"
-                  name="image"
-                  accept=".png, .jpg, .jpeg"
-                />
-              </div>
+            <div style={{marginTop: "150px"}}
+            className="col-lg-3">
               <BlackButton title="submit" />
             </div>
           </div>
@@ -116,4 +102,4 @@ const ImageForm = ({ catName, userId }) => {
   );
 };
 
-export default ImageForm;
+export default TextRecordForm;
