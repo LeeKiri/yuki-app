@@ -2,7 +2,7 @@
 const passport = require("../config/configLocalStrategy");
 const isAuthenticated = require("../config/isAuthenticated");
 const app = require("express").Router();
-const { User } = require("../models/index");
+const { User, Image } = require("../models/index");
 
 // Register User
 app.post("/api/signup", (req, res) => {
@@ -28,6 +28,7 @@ app.post("/api/signup", (req, res) => {
     res.status(500).send({ errors: "Passwords don't match" }).end();
   }
 });
+
 // Endpoint to login
 app.post("/api/login", passport.authenticate("local"), (req, res) => {
   const loginUser = {
@@ -36,6 +37,30 @@ app.post("/api/login", passport.authenticate("local"), (req, res) => {
   };
   res.send(loginUser);
   console.log(loginUser, " authenticated");
+});
+
+app.post("/api/upload/text", isAuthenticated, (req, res, cb) => {
+  const newRecord = new Image({
+    title: req.body.title,
+    description: req.body.description,
+    date: req.body.date,
+    user_id: req.body.userId,
+  });
+  newRecord
+    .save()
+    .then((result) => {
+      console.log(result);
+      User.findByIdAndUpdate(
+        { _id: req.user._id },
+        { $push: { images: result._id } }
+      ).then(() => {
+        res.status(200).json({
+          success: true,
+          document: result,
+        });
+      });
+    })
+    .catch((err) => cb(err));
 });
 
 // Endpoint to get current user
@@ -48,8 +73,7 @@ app.get("/api/user", isAuthenticated, (req, res) => {
       .then((data) => {
         res.json(data);
       });
-    console.log("res on server", req.user);
-    // res.json(req.user);
+    res.json(req.user);
   }
 });
 

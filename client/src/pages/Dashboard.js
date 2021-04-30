@@ -3,6 +3,7 @@ import NavbarWhite from "../components/Navbar/NavbarWhite";
 import Banner from "../components/Banner/Banner";
 import DashboardIntro from "../components/Headings/DashboardIntro";
 import ImageForm from "../components/Forms/ImageForm";
+import TextRecordForm from "../components/Forms/TextRecordForm"
 import RecordImage from "../components/Cards/Records/RecordImage";
 import RecordNoImg from "../components/Cards/Records/RecordNoImage";
 import Container from "../components/Container/Container";
@@ -48,6 +49,8 @@ const Dashboard = () => {
       <Banner title={title} caption={caption} url={catImage} />
       <DashboardIntro name={userName} />
       <ImageForm catName={catName} userId={userId} />
+      <TextRecordForm catName={catName} userId={userId} />
+
       <h5
         style={{
           textAlign: "center",
