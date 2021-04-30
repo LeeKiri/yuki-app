@@ -39,7 +39,9 @@ app.post("/api/login", passport.authenticate("local"), (req, res) => {
   console.log(loginUser, " authenticated");
 });
 
+//upload a text record
 app.post("/api/upload/text", isAuthenticated, (req, res, cb) => {
+  console.log(req.body, "req")
   const newRecord = new Image({
     title: req.body.title,
     description: req.body.description,
@@ -73,7 +75,7 @@ app.get("/api/user", isAuthenticated, (req, res) => {
       .then((data) => {
         res.json(data);
       });
-    res.json(req.user);
+    // res.json(req.user);
   }
 });
 

@@ -8,17 +8,14 @@ const TextRecordForm = ({ catName, userId }) => {
   const [date, setDate] = useState();
 
   const uploadText = (e) => {
-    let imageFormObj = new FormData();
-    imageFormObj.append("title", title);
-    imageFormObj.append("description", description);
-    imageFormObj.append("date", date);
-    imageFormObj.append("userId", userId);
-
-     axios({
-      method: "post",
-      url: "/api/upload/text",
-      data: imageFormObj,
-    })
+    let imageFormObj = {
+      title,
+      description,
+      date,
+      userId,
+    };
+    axios
+      .post("/api/upload/text", imageFormObj)
       .then((data) => {
         if (data.data.success) {
           alert("file successfully uploaded");
@@ -38,7 +35,7 @@ const TextRecordForm = ({ catName, userId }) => {
   };
   return (
     <>
-      <form onSubmit={handleSubmit} encType="multipart/form-data" method="post">
+      <form onSubmit={handleSubmit} >
         <div
           className="container"
           style={{
@@ -91,8 +88,7 @@ const TextRecordForm = ({ catName, userId }) => {
                 ></textarea>
               </div>
             </div>
-            <div style={{marginTop: "150px"}}
-            className="col-lg-3">
+            <div style={{ marginTop: "150px" }} className="col-lg-3">
               <BlackButton title="submit" />
             </div>
           </div>
