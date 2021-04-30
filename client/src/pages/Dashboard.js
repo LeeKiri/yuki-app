@@ -54,7 +54,7 @@ const Dashboard = () => {
       <NavbarWhite />
       <Banner title={title} caption={caption} url={catImage} />
       <DashboardIntro name={userName} />
-      <Toggle value={radio} onChange={handleRadioChange} />
+      <Toggle value={radio} handleRadioChange={handleRadioChange} />
       {radio === "visual" ? (
         <ImageForm catName={catName} userId={userId} />
       ) : (
