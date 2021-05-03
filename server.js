@@ -15,6 +15,10 @@ const io = require("socket.io")(http, {
 //port
 const PORT = process.env.PORT || 8080;
 
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
+
 //middleware
 app.use(express.urlencoded({ limit: "50mb", extended: true }));
 app.use(express.json({ limit: "50mb" }));
