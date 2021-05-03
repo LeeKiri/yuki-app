@@ -83,36 +83,49 @@ const ChatRoomBox = ({ userName }) => {
             </div>
           </div>
           <div className="col-lg-3">
-              <h6 style={{ margin: "50px"}}>Members</h6>
-            <div style={{ backgroundColor: "white", height: "fit-content", margin: "50px", borderRadius: "5px"}}>
-            </div>
+            <h6 style={{ margin: "50px" }}>Members</h6>
+            <div
+              style={{
+                backgroundColor: "white",
+                height: "fit-content",
+                margin: "50px",
+                borderRadius: "5px",
+              }}
+            ></div>
             <Link to="/dashboard">
-                    <BlackButtonClick title="Leave" />
+              <BlackButtonClick title="Leave" />
             </Link>
           </div>
-        <div className="messagesContainer">
-          <ol style={{ listStyleType: "none" }}className="messagesList">
-            {messages.map((message, i) => (
-              <li
-                style={{  
-                  backgroundColor: "#1E90FF",
-                  padding: "15px",
-                  color: "white",
-                  borderRadius: "10px",
-                  margin: "10px",
-                  fontSize: "20px",
-                  font: "yserif",
-                  marginRight: "20px",
-                }}
-                key={i}
-                className= {`messageItem ${
-                  message.ownedByCurrentUser ? "myMessage" : "recievedMessage"
-                }`}
-              >
-                {`${userName}: ${message.body}`}
-              </li>
-            ))}
-          </ol>
+        </div>
+        <div className="row">
+          <div className="col-lg-12">
+            <div className="messagesContainer">
+              <ol style={{ listStyleType: "none" }} className="messagesList">
+                {messages.map((message, i) => (
+                  <li
+                    style={{
+                      backgroundColor: "#1E90FF",
+                      padding: "15px",
+                      color: "white",
+                      borderRadius: "10px",
+                      margin: "10px",
+                      fontSize: "20px",
+                      font: "yserif",
+                      marginRight: "20px",
+                    }}
+                    key={i}
+                    className={`messageItem ${
+                      message.ownedByCurrentUser
+                        ? "myMessage"
+                        : "recievedMessage"
+                    }`}
+                  >
+                    {`${userName}: ${message.body}`}
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </div>
         </div>
       </div>
     </>
