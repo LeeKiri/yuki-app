@@ -18,7 +18,7 @@ const PORT = process.env.PORT || 8080;
 
 //serve up static assets to heroku
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "client/build")));
+  app.use("/", express.static(path.join(__dirname, "client/build")));
 }
 
 //middleware
