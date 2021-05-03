@@ -29,8 +29,8 @@ const CommunityChat = () => {
             marginTop: "20px",
             height: "350px",
             alignContent: "center",
-            mozBoxShadow: "inset 0 0 10px #000000",
-            webkitBoxShadow: "inset 0 0 10px #000000",
+            MozBoxShadow: "inset 0 0 10px #000000",
+            WebkitBoxShadow: "inset 0 0 10px #000000",
             boxShadow: "inset 0 0 10px #000000",
           }}
         >
@@ -51,7 +51,7 @@ const CommunityChat = () => {
               }}
             >
               <form onSubmit={handleSubmit}>
-                <label for="cars" style={{ padding: "10px", fontSize: "20px" }}>
+                <label htmlFor="cars" style={{ padding: "10px", fontSize: "20px" }}>
                   Choose a Room:
                 </label>
                 <select
