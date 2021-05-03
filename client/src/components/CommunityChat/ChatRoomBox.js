@@ -5,7 +5,7 @@ import { useParams } from "react-router";
 
 const ChatRoomBox = ({ userName }) => {
   const { roomId } = useParams();
-  const { messages, sendMessage } = useChat(roomId);
+  const { messages, sendMessage } = useChat(roomId, userName);
 
   const [newMessage, setNewMessage] = useState("");
 
@@ -70,7 +70,7 @@ const ChatRoomBox = ({ userName }) => {
                   message.ownedByCurrentUser ? "myMessage" : "recievedMessage"
                 }`}
               >
-                {userName}: {message.body}
+                {`${userName}: ${message.body}`}
               </li>
             ))}
           </ol>

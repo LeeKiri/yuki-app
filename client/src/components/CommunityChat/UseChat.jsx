@@ -4,7 +4,7 @@ import socketIOClient from "socket.io-client";
 const NEW_CHAT_MESSAGE_EVENT = "newChatMessage";
 const SOCKET_SERVER_URL = "http://localhost:8080";
 
-const useChat = (roomId) => {
+const useChat = (roomId, userName) => {
   const [messages, setMessages] = useState([]);
   const socketRef = useRef();
 
@@ -30,7 +30,9 @@ const useChat = (roomId) => {
     socketRef.current.emit(NEW_CHAT_MESSAGE_EVENT, {
       body: messageBody,
       senderId: socketRef.current.id,
+      username: socketRef.current.userName,
     });
+    console.log("sender and user", socketRef.current.id,  socketRef.current.userName)
   };
 
   return { messages, sendMessage };
