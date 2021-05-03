@@ -68,6 +68,7 @@ io.on("connection", (socket) => {
 
   socket.on("disconnect", () => {
     socket.leave(roomId);
+    console.log("a user disconnected");
   });
 });
 

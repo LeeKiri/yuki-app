@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const ChatRoomBox = ({ userName }) => {
   const { roomId } = useParams();
-  const { messages, sendMessage } = useChat(roomId);
+  const { messages, sendMessage } = useChat(roomId, userName);
 
   const [newMessage, setNewMessage] = useState("");
 
@@ -90,6 +90,29 @@ const ChatRoomBox = ({ userName }) => {
                     <BlackButtonClick title="Leave" />
             </Link>
           </div>
+        <div className="messagesContainer">
+          <ol style={{ listStyleType: "none" }}className="messagesList">
+            {messages.map((message, i) => (
+              <li
+                style={{  
+                  backgroundColor: "#1E90FF",
+                  padding: "15px",
+                  color: "white",
+                  borderRadius: "10px",
+                  margin: "10px",
+                  fontSize: "20px",
+                  font: "yserif",
+                  marginRight: "20px",
+                }}
+                key={i}
+                className= {`messageItem ${
+                  message.ownedByCurrentUser ? "myMessage" : "recievedMessage"
+                }`}
+              >
+                {`${userName}: ${message.body}`}
+              </li>
+            ))}
+          </ol>
         </div>
       </div>
     </>
