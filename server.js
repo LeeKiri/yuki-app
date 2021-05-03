@@ -15,6 +15,11 @@ const io = require("socket.io")(http, {
 //port
 const PORT = process.env.PORT || 8080;
 
+//serve up static assets to heroku
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
+
 //middleware
 app.use(express.urlencoded({ limit: "50mb", extended: true }));
 app.use(express.json({ limit: "50mb" }));
@@ -39,12 +44,16 @@ app.use(require("./routes/imageRoute.js"));
 app.use("/uploads", express.static("uploads"));
 
 //mongoose connection
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/yuki", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useCreateIndex: true,
-  useFindAndModify: false,
-});
+mongoose.connect(
+  process.env.MONGODB_URI ||
+    "mongodb+srv://lee:easy111@cluster0.n6art.mongodb.net/yuki?retryWrites=true&w=majority",
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+  }
+);
 
 //socketio connection
 const NEW_CHAT_MESSAGE_EVENT = "newChatMessage";
