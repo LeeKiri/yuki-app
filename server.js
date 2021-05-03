@@ -2,6 +2,7 @@ const express = require("express");
 const session = require("express-session");
 const passport = require("./config/configLocalStrategy");
 const mongoose = require("mongoose");
+const path = require("path");
 const app = express();
 
 const http = require("http").Server(app);
@@ -17,7 +18,7 @@ const PORT = process.env.PORT || 8080;
 
 //serve up static assets to heroku
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
+  app.use(express.static(path.join(__dirname, "client/build")));
 }
 
 //middleware
