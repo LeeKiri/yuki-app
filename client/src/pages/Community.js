@@ -35,8 +35,8 @@ const Community = () => {
         <CommunityCard
           title={cardTitle}
           img={cardImage}
-          guidelines={cardGuidelines.map((x) => (
-            <li>{x}</li>
+          guidelines={cardGuidelines.map((x, i) => (
+            <li key={i}>{x}</li>
           ))}
         />
         <JoinChatBox />

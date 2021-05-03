@@ -24,7 +24,7 @@ const RecordImg = ({ title, description, date, image }) => {
               style={{ width: "200px", float: "right"}}
               src={image}
               alt="thumbnail record"
-              class="img-thumbnail img-fluid"
+              className="img-thumbnail img-fluid"
             />
           </div>
         </div>
