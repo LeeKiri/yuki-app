@@ -15,7 +15,6 @@ const io = require("socket.io")(http, {
 //port
 const PORT = process.env.PORT || 8080;
 
-
 //serve up static assets to heroku
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
