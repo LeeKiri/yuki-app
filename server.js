@@ -52,7 +52,6 @@ const NEW_CHAT_MESSAGE_EVENT = "newChatMessage";
 io.on("connection", (socket) => {
   const { roomId } = socket.handshake.query;
   socket.join(roomId);
-  console.log("this is server");
   socket.on(NEW_CHAT_MESSAGE_EVENT, (data) => {
     io.in(roomId).emit(NEW_CHAT_MESSAGE_EVENT, data);
   });
