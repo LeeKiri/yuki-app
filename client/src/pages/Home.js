@@ -27,8 +27,8 @@ const Home = () => {
             <div className="row">
                 <div className="col">
 
-        {HomeCardContent.map((card) => (
-            <HomeCards cardData={card} />
+        {HomeCardContent.map((card, i) => (
+            <HomeCards key={i} cardData={card} />
         ))}
                 </div>
             </div>
