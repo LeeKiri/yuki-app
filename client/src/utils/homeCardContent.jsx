@@ -15,7 +15,7 @@ const homeCards = [
     },
     {
         title: "Community",
-        content: "Find vets or shelters in your local commuity. Chat with members to get advice and support. Learn from the experience of others.",
+        content: "Chat with other members to get advice and support. Learn from the experience of others. Join chat rooms to discuss topics like health, diet and socializing your cat.",
         image: Cat3
     }
 ]
