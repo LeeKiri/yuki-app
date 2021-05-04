@@ -24,7 +24,6 @@ const Dashboard = () => {
   const [catName, setCatname] = useState();
   const [userId, setUserId] = useState();
   const [records, setRecords] = useState();
-  const [isLogin, setLogin] = useState(false);
 
   const [radio, setRadio] = useState("visual");
 
@@ -40,7 +39,6 @@ const Dashboard = () => {
         setCatname(results.data.cat_name);
         setUserId(results.data._id);
         setRecords(results.data.images);
-        setLogin(true)
       })
       .catch((err) => console.log(err));
   };

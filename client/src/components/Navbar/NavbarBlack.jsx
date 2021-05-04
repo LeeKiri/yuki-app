@@ -1,6 +1,13 @@
+import axios from "axios";
 import { Link } from "react-router-dom";
 
 const NavbarBlack = () => {
+
+  const logout = async () => {
+  await axios.get("/logout")
+  window.location.assign("/")
+  };
+
   return (
     <>
    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -14,7 +21,7 @@ const NavbarBlack = () => {
           <Link className="nav-link" to="/login">Login</Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link" to="/">Logout</Link>
+          <Link className="nav-link" onClick={logout} >Logout</Link>
         </li>
       </ul>
     </div>
