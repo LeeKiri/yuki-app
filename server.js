@@ -20,7 +20,7 @@ const PORT = process.env.PORT || 8080;
 
 //serve up static assets to heroku
 if (process.env.NODE_ENV === "production") {
-  app.use("/", express.static(path.join(__dirname, "client/build")));
+  app.use(express.static("client/build"));
 }
 
 //middleware
@@ -37,7 +37,6 @@ app.use(
     proxy: true,
   })
 );
-
 //passport connection
 app.use(passport.initialize());
 app.use(passport.session());
@@ -45,6 +44,10 @@ app.use(passport.session());
 //routes set
 app.use(require("./routes/apiRoutes.js"));
 app.use(require("./routes/imageRoute.js"));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+});
 
 //image upload with Multer
 app.use("/uploads", express.static("uploads"));
