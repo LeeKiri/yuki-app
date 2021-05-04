@@ -1,0 +1,13 @@
+@media only screen and (max-width: 1160px) {
+    #homeCardCol{
+        padding-left: 150px;
+        
+    } 
+}
+@media only screen and (max-width: 760px ) {
+    #getStartedDiv{
+        width: 95%;
+        border-radius: 20px;
+    }
+}
+
