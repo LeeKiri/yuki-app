@@ -17,8 +17,8 @@ const Video = () => {
         <NavbarWhite />
         <Banner title={title} caption={caption} url={catImage} />
         <Container >
-        {videos.map((vid) => (
-          <VideoCard vidData={vid}
+        {videos.map((vid, i) => (
+          <VideoCard vidData={vid} key={i}
           />
         ))}
         </Container>

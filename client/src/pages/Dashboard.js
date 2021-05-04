@@ -35,6 +35,7 @@ const Dashboard = () => {
     axios
       .get("/api/user")
       .then((results) => {
+        console.log(results.data);
         setUsername(results.data.username);
         setCatname(results.data.cat_name);
         setUserId(results.data._id);

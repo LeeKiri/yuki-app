@@ -41,6 +41,9 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+//image upload with Multer
+app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
+
 //routes set
 app.use(require("./routes/apiRoutes.js"));
 app.use(require("./routes/imageRoute.js"));
@@ -48,9 +51,6 @@ app.use(require("./routes/imageRoute.js"));
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
-
-//image upload with Multer
-app.use("/uploads", express.static("uploads"));
 
 //mongoose connection
 mongoose.connect(
