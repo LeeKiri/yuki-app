@@ -18,15 +18,15 @@ function App() {
     getUser();
   }, []);
 
-  const getUser = async () => {
-    await axios
+  const getUser = () => {
+    console.log("fetching user")
+     axios
       .get("/api/user")
       .then((results) => {
-        console.log(results, "results app")
-        if (results.req.user === true) {
-        setLogin(true);
-        } else {
+        if (results.data === null) {
           setLogin(false);
+        } else {
+          setLogin(true);
         }
       })
       .catch((err) => console.log(err));
@@ -53,27 +53,21 @@ function App() {
             {isLoggedin ? (
               <Video />
             ) : (
-              <Route path="/login">
                 <Login />
-              </Route>
             )}
           </Route>
           <Route path="/community">
             {isLoggedin ? (
               <Community />
             ) : (
-              <Route path="/login">
                 <Login />
-              </Route>
             )}
           </Route>
           <Route path="/chatroom/:roomId">
             {isLoggedin ? (
               <ChatRoom />
             ) : (
-              <Route path="/login">
                 <Login />
-              </Route>
             )}
           </Route>
           <Route exact path="/">
