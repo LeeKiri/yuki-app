@@ -4,6 +4,7 @@ const passport = require("./config/configLocalStrategy");
 const mongoose = require("mongoose");
 const path = require("path");
 const app = express();
+const cookieParser = require("cookie-parser");
 
 const http = require("http").Server(app);
 const io = require("socket.io")(http, {
@@ -25,6 +26,8 @@ if (process.env.NODE_ENV === "production") {
 app.use(express.urlencoded({ limit: "50mb", extended: true }));
 app.use(express.json({ limit: "50mb" }));
 app.use(express.static("public"));
+app.use(cors({ credentials: true }));
+app.use(cookieParser);
 app.use(
   session({
     secret: "keyboard cat",
