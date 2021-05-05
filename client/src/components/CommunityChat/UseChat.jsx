@@ -8,10 +8,11 @@ const SOCKET_SERVER_URL = "http://localhost:8080";
 const useChat = ({ roomId }) => {
   const [messages, setMessages] = useState([]);
   const [users, setUsers] = useState([])
-
+  console.log(roomId, "in useChat")
   const socketRef = useRef();
-
+  
   useEffect(() => {
+    console.log(roomId, "in useeffect")
 
     // this creates the websocket connection
     socketRef.current = socketIOClient(SOCKET_SERVER_URL, {
@@ -46,7 +47,7 @@ const useChat = ({ roomId }) => {
   //send new user to server 
   const sendNewUser = (user) => {
     socketRef.current.emit(newUser, {
-      body: user,
+      user: user,
       senderId: socketRef.current.id,
     })
   }

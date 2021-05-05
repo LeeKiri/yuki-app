@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import useChat from "./UseChat";
 import { useState, useEffect } from "react";
 import BlackButtonClick from "../Button/BlackButtonClick";
@@ -6,7 +7,7 @@ import { Link } from "react-router-dom";
 
 const ChatRoomBox = ({ userName }) => {
   const { roomId } = useParams();
-  const { messages, sendMessage, users, sendNewUser } = useChat(roomId);
+  const { messages, sendMessage, users, sendNewUser } = useChat({ roomId });
 
   const [newMessage, setNewMessage] = useState("");
   const [usersList, setUsersList] = useState([]);
@@ -16,9 +17,8 @@ const ChatRoomBox = ({ userName }) => {
   }, [users]);
 
   useEffect(() => {
-    sendNewUser(userName)
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    if (userName) sendNewUser(userName);
+  }, [userName]);
 
   const handleNewMessageChange = (e) => {
     setNewMessage(e.target.value);
@@ -81,9 +81,7 @@ const ChatRoomBox = ({ userName }) => {
                     }}
                     key={i}
                     className={`messageItem ${
-                      data.ownedByCurrentUser
-                        ? "myMessage"
-                        : "recievedMessage"
+                      data.ownedByCurrentUser ? "myMessage" : "recievedMessage"
                     }`}
                   >
                     {data.user}: {data.body}

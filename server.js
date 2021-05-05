@@ -70,6 +70,7 @@ const newChatMessage = "newChatMessage";
 const newUser = "newUser";
 
 const getUsers = (roomId) => {
+  console.log(roomId, "roomid");
   const clients = io.sockets.adapter.rooms[roomId];
   if (clients) {
     const sockets = Object.values(clients);
@@ -82,8 +83,9 @@ io.on("connection", (socket) => {
   const { roomId } = socket.handshake.query;
   socket.join(roomId);
 
-  const emitUsers = (roomId) => {
+  const emitUsers = () => {
     io.in(roomId).emit("users", getUsers(roomId));
+    console.log("roomid inside", roomId);
   };
 
   socket.on(newChatMessage, (data) => {
