@@ -1,40 +1,65 @@
 import { useEffect, useRef, useState } from "react";
 import socketIOClient from "socket.io-client";
 
-const NEW_CHAT_MESSAGE_EVENT = "newChatMessage";
+const newChatMessage = "newChatMessage";
+const newUser = "newUser";
 const SOCKET_SERVER_URL = "http://localhost:8080";
 
-const useChat = ( {roomId, userName} ) => {
+const useChat = ({ roomId }) => {
   const [messages, setMessages] = useState([]);
+  const [users, setUsers] = useState([])
+
   const socketRef = useRef();
 
   useEffect(() => {
+
+    // this creates the websocket connection
     socketRef.current = socketIOClient(SOCKET_SERVER_URL, {
       query: { roomId },
     });
 
-    socketRef.current.on(NEW_CHAT_MESSAGE_EVENT, (message) => {
+    // set up to listen for incoming messages
+    socketRef.current.on(newChatMessage, (data) => {
+      console.log(data, "data")
       const incomingMessage = {
-        ...message,
-        ownedByCurrentUser: message.senderId === socketRef.current.id,
+        ...data,
+        ownedByCurrentUser: data.senderId === socketRef.current.id,
       };
       setMessages((messages) => [...messages, incomingMessage]);
     });
 
+    //setup to listen for new users
+    socketRef.current.on(newUser, (user) => {
+      const incomingUser = {
+        ...user,
+        nameofCurrentUser: user.senderId === socketRef.current.id,
+      };
+      setUsers((users) => [...users, incomingUser]);
+    })
+
+    //destroys connection when user disconnects
     return () => {
       socketRef.current.disconnect();
     };
   }, [roomId]);
 
-  const sendMessage = (messageBody) => {
-    socketRef.current.emit(NEW_CHAT_MESSAGE_EVENT, {
+  //send new user to server 
+  const sendNewUser = (user) => {
+    socketRef.current.emit(newUser, {
+      body: user,
+      senderId: socketRef.current.id,
+    })
+  }
+  //send message to server which is then broadcast to chatroom
+  const sendMessage = (messageBody, user) => {
+    socketRef.current.emit(newChatMessage, {
       body: messageBody,
       senderId: socketRef.current.id,
+      user: user,
     });
-    console.log("sender and user", socketRef.current.id,  socketRef.current.userName)
   };
 
-  return { messages, sendMessage };
+  return { messages, sendMessage, users, sendNewUser };
 };
 
 export default useChat;
