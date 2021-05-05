@@ -37,6 +37,7 @@ app.use(
     proxy: true,
   })
 );
+
 //passport connection
 app.use(passport.initialize());
 app.use(passport.session());
@@ -65,19 +66,49 @@ mongoose.connect(
 );
 
 //socketio connection
-const NEW_CHAT_MESSAGE_EVENT = "newChatMessage";
+const newChatMessage = "newChatMessage";
+const newUser = "newUser";
+
+const getUsers = (roomId) => {
+  const clients = io.sockets.adapter.rooms[roomId];
+  if (clients) {
+    const sockets = Object.values(clients);
+    const users = sockets.map((s) => s.user);
+    return users.filter((u) => u !== undefined);
+  }
+};
 
 io.on("connection", (socket) => {
   const { roomId } = socket.handshake.query;
   socket.join(roomId);
-  socket.on(NEW_CHAT_MESSAGE_EVENT, (data) => {
-    io.in(roomId).emit(NEW_CHAT_MESSAGE_EVENT, data);
+
+  const emitUsers = (roomId) => {
+    io.in(roomId).emit("users", getUsers(roomId));
+  };
+
+  socket.on(newChatMessage, (data) => {
+    io.in(roomId).emit(newChatMessage, data);
+    console.log(data, "server data 1");
+  });
+
+  socket.on(newUser, (data) => {
+    console.log(newUser, data, "server data 2");
+    socket.user = data;
+    emitUsers();
   });
 
   socket.on("disconnect", () => {
     socket.leave(roomId);
+
+    const { user } = socket;
+    if (user) {
+      io.in(roomId).emit("server_message", {
+        message: `${user.username} left the chat`,
+      });
+    }
     console.log("a user disconnected");
   });
+  emitUsers();
 });
 
 http.listen(PORT, () => {

@@ -131,7 +131,7 @@ Jira Kanban Board
 
 ![yu10](https://user-images.githubusercontent.com/73642462/117086770-de376400-ad90-11eb-92b7-203b4265dc45.PNG)
 
-Trello Wireframes
+Figma Wireframes
 
 ![yu11](https://user-images.githubusercontent.com/73642462/117086772-de376400-ad90-11eb-9693-d0491ba21c89.PNG)
 

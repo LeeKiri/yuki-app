@@ -1,14 +1,24 @@
 import useChat from "./UseChat";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import BlackButtonClick from "../Button/BlackButtonClick";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 
 const ChatRoomBox = ({ userName }) => {
   const { roomId } = useParams();
-  const { messages, sendMessage } = useChat(roomId, userName);
+  const { messages, sendMessage, users, sendNewUser } = useChat(roomId);
 
   const [newMessage, setNewMessage] = useState("");
+  const [usersList, setUsersList] = useState([]);
+
+  useEffect(() => {
+    setUsersList(users);
+  }, [users]);
+
+  useEffect(() => {
+    sendNewUser(userName)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleNewMessageChange = (e) => {
     setNewMessage(e.target.value);
@@ -16,7 +26,7 @@ const ChatRoomBox = ({ userName }) => {
 
   const handleSendMessage = () => {
     console.log("newMessage", newMessage);
-    sendMessage(newMessage);
+    sendMessage(newMessage, userName);
     setNewMessage("");
   };
 
@@ -57,7 +67,7 @@ const ChatRoomBox = ({ userName }) => {
             </div>
             <div className="messagesContainer">
               <ol style={{ listStyleType: "none" }} className="messagesList">
-                {messages.map((message, i) => (
+                {messages.map((data, i) => (
                   <li
                     style={{
                       backgroundColor: "#1E90FF",
@@ -71,12 +81,12 @@ const ChatRoomBox = ({ userName }) => {
                     }}
                     key={i}
                     className={`messageItem ${
-                      message.ownedByCurrentUser
+                      data.ownedByCurrentUser
                         ? "myMessage"
                         : "recievedMessage"
                     }`}
                   >
-                    {userName}: {message.body}
+                    {data.user}: {data.body}
                   </li>
                 ))}
               </ol>
@@ -91,40 +101,16 @@ const ChatRoomBox = ({ userName }) => {
                 margin: "50px",
                 borderRadius: "5px",
               }}
-            ></div>
+            >
+              <ul className="listUnstyled">
+                {usersList.map((data, i) => (
+                  <li key={i}>{data.user}</li>
+                ))}
+              </ul>
+            </div>
             <Link to="/dashboard">
               <BlackButtonClick title="Leave" />
             </Link>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-lg-12">
-            <div className="messagesContainer">
-              <ol style={{ listStyleType: "none" }} className="messagesList">
-                {messages.map((message, i) => (
-                  <li
-                    style={{
-                      backgroundColor: "#1E90FF",
-                      padding: "15px",
-                      color: "white",
-                      borderRadius: "10px",
-                      margin: "10px",
-                      fontSize: "20px",
-                      font: "yserif",
-                      marginRight: "20px",
-                    }}
-                    key={i}
-                    className={`messageItem ${
-                      message.ownedByCurrentUser
-                        ? "myMessage"
-                        : "recievedMessage"
-                    }`}
-                  >
-                    {`${userName}: ${message.body}`}
-                  </li>
-                ))}
-              </ol>
-            </div>
           </div>
         </div>
       </div>
