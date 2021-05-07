@@ -32,6 +32,7 @@ const Community = () => {
       <Banner title={title} caption={caption} url={catImage} />
       <CommunityIntro />
       <Container>
+        <JoinChatBox />
         <CommunityCard
           title={cardTitle}
           img={cardImage}
@@ -39,7 +40,6 @@ const Community = () => {
             <li key={i}>{x}</li>
           ))}
         />
-        <JoinChatBox />
       </Container>
       <Footer />
     </>

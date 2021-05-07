@@ -41,7 +41,7 @@ app.post("/api/login", passport.authenticate("local"), (req, res) => {
 
 //upload a text record
 app.post("/api/upload/text", isAuthenticated, (req, res, cb) => {
-  console.log(req.body, "req")
+  console.log(req.body, "req");
   const newRecord = new Image({
     title: req.body.title,
     description: req.body.description,
