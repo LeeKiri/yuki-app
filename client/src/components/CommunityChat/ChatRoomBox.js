@@ -10,7 +10,7 @@ const ChatRoomBox = ({ userName }) => {
   const { messages, sendMessage, users, sendNewUser } = useChat({ roomId });
 
   const [newMessage, setNewMessage] = useState("");
-  const [usersList, setUsersList] = useState([]);
+  const [usersList, setUsersList] = useState();
 
   useEffect(() => {
     setUsersList(users);
@@ -28,6 +28,12 @@ const ChatRoomBox = ({ userName }) => {
     console.log("newMessage", newMessage);
     sendMessage(newMessage, userName);
     setNewMessage("");
+  };
+  const handleKeyEnter = (e) => {
+    if (e.key === "Enter") {
+      sendMessage(newMessage, userName);
+      setNewMessage("");
+    }
   };
 
   return (
@@ -58,57 +64,98 @@ const ChatRoomBox = ({ userName }) => {
             <textarea
               value={newMessage}
               onChange={handleNewMessageChange}
+              onKeyPress={handleKeyEnter}
               placeholder="Write your message here...."
               className="newMessageInputField"
               style={{ marginLeft: "50px", padding: "20px", width: "75%" }}
             />
-            <div style={{ paddingLeft: "50px" }}>
+            <div style={{ paddingLeft: "50px", paddingBottom: "10px" }}>
               <BlackButtonClick title="Send" onClick={handleSendMessage} />
             </div>
             <div className="messagesContainer">
               <ol style={{ listStyleType: "none" }} className="messagesList">
-                {messages.map((data, i) => (
-                  <li
-                    style={{
-                      backgroundColor: "#1E90FF",
-                      padding: "15px",
-                      color: "white",
-                      borderRadius: "10px",
-                      margin: "10px",
-                      fontSize: "20px",
-                      font: "yserif",
-                      marginRight: "20px",
-                    }}
-                    key={i}
-                    className={`messageItem ${
-                      data.ownedByCurrentUser ? "myMessage" : "recievedMessage"
-                    }`}
-                  >
-                    {data.user}: {data.body}
-                  </li>
-                ))}
+                {messages.map((data, i) =>
+                  data.user === userName ? (
+                    <li
+                      style={{
+                        backgroundColor: "#1a75ff",
+                        padding: "10px",
+                        color: "white",
+                        borderRadius: "10px",
+                        margin: "8px",
+                        fontSize: "15px",
+                        font: "yserif",
+                        marginRight: "20px",
+                        width: "fit-content",
+                        letterSpacing: ".1em",
+                      }}
+                      key={i}
+                      className={`messageItem ${
+                        data.ownedByCurrentUser
+                          ? "myMessage"
+                          : "recievedMessage"
+                      }`}
+                    >
+                      {data.user}: {data.body}
+                    </li>
+                  ) : (
+                    <li
+                      style={{
+                        backgroundColor: "#009973",
+                        padding: "10px",
+                        color: "white",
+                        borderRadius: "10px",
+                        margin: "8px",
+                        fontSize: "15px",
+                        font: "yserif",
+                        marginRight: "20px",
+                        width: "fit-content",
+                        letterSpacing: ".1em",
+                      }}
+                      key={i}
+                      className={`messageItem ${
+                        data.ownedByCurrentUser
+                          ? "myMessage"
+                          : "recievedMessage"
+                      }`}
+                    >
+                      {data.user}: {data.body}
+                    </li>
+                  )
+                )}
               </ol>
             </div>
           </div>
           <div className="col-lg-3">
-            <h6 style={{ margin: "50px" }}>Members</h6>
-            <div
-              style={{
-                backgroundColor: "white",
-                height: "fit-content",
-                margin: "50px",
-                borderRadius: "5px",
-              }}
-            >
-              <ul className="listUnstyled">
-                {usersList.map((data, i) => (
-                  <li key={i}>{data.user}</li>
-                ))}
-              </ul>
+            <div className="btnDiv" style={{ marginTop: "50px", marginRight: "80px" }}>
+              <Link to="/dashboard">
+                <BlackButtonClick title="Leave Chat" />
+              </Link>
             </div>
-            <Link to="/dashboard">
-              <BlackButtonClick title="Leave" />
-            </Link>
+            {usersList === null ? (
+              <>
+                <h6 style={{ marginTop: "20px" }}>Members</h6>
+                <div
+                  style={{
+                    backgroundColor: "white",
+                    height: "fit-content",
+                    margin: "50px",
+                    borderRadius: "5px",
+                    textAlign: "center",
+                  }}
+                >
+                  <ul className="list-unstyled">
+                    {usersList.map((data, i) => (
+                      <li style={{ textAlign: "left", padding: "5px" }} key={i}>
+                        {data}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </>
+            ) : (
+              <></>
+            )}
           </div>
         </div>
       </div>
