@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 const express = require("express");
 const session = require("express-session");
 const passport = require("./config/configLocalStrategy");
@@ -65,25 +66,35 @@ mongoose.connect(
   }
 );
 
-//socketio connection
+//socket.io connection
 const newChatMessage = "newChatMessage";
 const newUser = "newUser";
+const users = [];
 
 const getUsers = (roomId) => {
-  const clients = io.sockets.adapter.rooms[roomId];
-  if (clients) {
-    const sockets = Object.values(clients);
-    const users = sockets.map((s) => s.user);
-    return users.filter((u) => u !== undefined);
-  }
+  const clients = io.sockets.adapter.rooms.get(roomId);
+  const clientArr = Array.from(clients);
+  console.log(clientArr, "ARR");
+  console.log(users, "users");
+  const newList = clientArr.map((arr) => {
+    const test = users.filter((user) => user.senderId === arr);
+    // eslint-disable-next-line array-callback-return
+    if (test.length === 0) {
+      return;
+    }
+    console.log(test, "test");
+    return test[0].user;
+  });
+  console.log(newList);
+  return newList;
 };
 
 io.on("connection", (socket) => {
   const { roomId } = socket.handshake.query;
   socket.join(roomId);
 
-  const emitUsers = (roomId) => {
-    io.in(roomId).emit("users", getUsers(roomId));
+  const emitUsers = () => {
+    io.to(roomId).emit("userList", getUsers(roomId));
   };
 
   socket.on(newChatMessage, (data) => {
@@ -92,23 +103,17 @@ io.on("connection", (socket) => {
   });
 
   socket.on(newUser, (data) => {
+    users.push(data);
     console.log(newUser, data, "server data 2");
-    socket.user = data;
+    console.log(users, "users");
     emitUsers();
   });
 
   socket.on("disconnect", () => {
     socket.leave(roomId);
-
-    const { user } = socket;
-    if (user) {
-      io.in(roomId).emit("server_message", {
-        message: `${user.username} left the chat`,
-      });
-    }
-    console.log("a user disconnected");
+    console.log("user disconnected");
+    emitUsers();
   });
-  emitUsers();
 });
 
 http.listen(PORT, () => {
