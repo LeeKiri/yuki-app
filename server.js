@@ -73,20 +73,20 @@ const users = [];
 
 const getUsers = (roomId) => {
   const clients = io.sockets.adapter.rooms.get(roomId);
-  const clientArr = Array.from(clients);
-  console.log(clientArr, "ARR");
-  console.log(users, "users");
-  const newList = clientArr.map((arr) => {
-    const test = users.filter((user) => user.senderId === arr);
-    // eslint-disable-next-line array-callback-return
-    if (test.length === 0) {
-      return;
-    }
-    console.log(test, "test");
-    return test[0].user;
-  });
-  console.log(newList);
-  return newList;
+  if (clients) {
+    const clientArr = Array.from(clients);
+    const newList = clientArr.map((arr) => {
+      const test = users.filter((user) => user.senderId === arr);
+      // eslint-disable-next-line array-callback-return
+      if (test.length === 0) {
+        return;
+      }
+      console.log(test, "test");
+      return test[0].user;
+    });
+    console.log(newList);
+    return newList;
+  }
 };
 
 io.on("connection", (socket) => {
