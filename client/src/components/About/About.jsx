@@ -7,6 +7,7 @@ import yuki5 from "../../images/yuki/yuki5.jpg";
 const About = () => {
   return (
     <div
+    id="aboutSection"
       style={{
         marginTop: "80px",
         padding: "30px",

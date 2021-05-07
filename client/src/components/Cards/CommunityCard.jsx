@@ -6,11 +6,13 @@ const CommunityCard = ({ img, title, guidelines }) => {
           className="card"
           style={{
             width: "18rem",
-            border: "none",
             display: "inline-block",
             verticalAlign: "top",
             margin: "20px",
             marginBottom: "200px",
+            MozBoxShadow: "inset 0 0 10px #000000",
+            WebkitBoxShadow: "inset 0 0 10px #000000",
+            boxShadow: "inset 0 0 10px #000000",
           }}
         >
           <img src={img} className="card-img-top" alt="funny cat" />

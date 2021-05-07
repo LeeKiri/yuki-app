@@ -34,6 +34,7 @@ const Home = () => {
             </div>
         </div>
         <HomePageForm />
+
         <About />
         <Footer />
         </>
