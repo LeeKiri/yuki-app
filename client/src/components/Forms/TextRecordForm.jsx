@@ -1,4 +1,6 @@
 import BlackButton from "../Button/BlackButton";
+import "../../pages/dashboard.css";
+
 import axios from "axios";
 import { useState } from "react";
 
@@ -37,23 +39,18 @@ const TextRecordForm = ({ catName, userId }) => {
     <>
       <form onSubmit={handleSubmit} >
         <div
-          className="container"
-          style={{
-            backgroundColor: "lightgray",
-            maxWidth: "100%",
-            marginBottom: "60px",
-          }}
+          className="formContainer"
         >
           <div className="row">
             <div className="col-lg-3">
               <div className="inputTitle mb-3">
-                <label className="form-label mt-5 ml-5">Title</label>
+                <label className="form-label mt-2 ml-5">Title</label>
                 <input
                   onChange={(e) => setTitle(e.target.value)}
-                  style={{ backgroundColor: "white", width: "85%" }}
                   type="text"
-                  className="form-control ml-5"
+                  className="form-control formDash ml-5 w-85"
                   placeholder="Enter a title"
+                  id="titleInput"
                 />
               </div>
 
@@ -61,34 +58,24 @@ const TextRecordForm = ({ catName, userId }) => {
                 <label className="form-label">Date</label>
                 <input
                   onChange={(e) => setDate(e.target.value)}
-                  style={{ backgroundColor: "white", width: "100%" }}
                   type="date"
-                  className="form-control"
+                  className="form-control formDash w-100"
                   placeholder="14/07/2021"
                 />
               </div>
             </div>
             <div className="col-lg-6">
-              <h4
-                style={{
-                  textAlign: "center",
-                  fontSize: "25px",
-                  marginTop: "10px",
-                }}
-              >
-                Create A Text Record For {catName}
-              </h4>
-              <div className="inputComments mt-3 ml-5 mb-4">
+              <div className="inputComments mt-1 ml-5 mb-4">
                 <label htmlFor="FormControlTextarea1">Description</label>
                 <textarea
                   onChange={(e) => setDescription(e.target.value)}
-                  className="form-control"
+                  className="form-control formDash"
                   id="logComments"
                   rows="5"
                 ></textarea>
               </div>
             </div>
-            <div style={{ marginTop: "150px" }} className="col-lg-3">
+            <div id="btnDiv" className="col-lg-3">
               <BlackButton title="submit" />
             </div>
           </div>

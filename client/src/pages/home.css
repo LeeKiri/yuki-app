@@ -1,0 +1,102 @@
+/*  css for Home page */
+#containerDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* cards */
+#homecards {
+  width: 18rem;
+  height: 367px;
+  border: none;
+  display: inline-block;
+  vertical-align: top;
+  margin: 20px;
+}
+.card-title {
+  text-align: center;
+}
+.card-text {
+  text-align: center;
+}
+/* getstarted section */
+#getStartedDiv {
+  background-color: lightgray;
+  width: 60%;
+  padding: 30px 50px;
+  margin: auto;
+  margin-top: 50px;
+  border-radius: 180px;
+}
+#getStartedHeading {
+  text-align: center;
+  margin-bottom: 20px;
+}
+/* form */
+#formP {
+  text-align: center;
+  margin-bottom: 20px;
+}
+#btnDiv {
+  text-align: center;
+  margin-bottom: 5px;
+}
+/* about */
+#aboutSection {
+  margin-top: 80px;
+  padding: 30px;
+  background-color: lightgrey;
+  max-width: 100%;
+  margin-bottom: 200px;
+  padding-bottom: 80px;
+}
+#aboutheading {
+  text-align: center;
+}
+#aboutP {
+  font-size: larger;
+  text-align: center;
+  width: 60%;
+  margin: auto;
+}
+.aboutPBig {
+  text-align: center;
+  width: 70%;
+  margin: auto;
+}
+#journeyHeading {
+  text-align: center;
+  font-weight: bolder;
+}
+#imgDiv {
+  text-align: center;
+  margin: auto;
+}
+#imageRow {
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+.imgYuki {
+  height: 230px;
+}
+/* mediaqueries */
+@media only screen and (max-width: 1160px) {
+    #homeCardCol{
+        padding-left: 150px;
+        
+    } 
+}
+@media only screen and (max-width: 770px ) {
+    #getStartedDiv{
+        width: 95%;
+        border-radius: 20px;
+    }
+    .imgYuki{
+        max-width: 250px;
+    }
+    #cardDivHome{
+      text-align: center !important;
+
+    }
+}

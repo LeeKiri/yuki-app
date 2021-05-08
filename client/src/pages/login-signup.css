@@ -1,0 +1,28 @@
+/* css for login and signup pages */
+
+/* signup page */
+.formSign-log{
+    background-color: lightgray !important; 
+}
+.signup-form{
+    width: 60%;
+    margin: auto;
+    margin-bottom: 50px;
+}
+
+/* login page */
+.login-form{
+    width: 60%;
+    margin: auto;
+    margin-bottom: 50px;
+}
+@media only screen and (max-width: 770px ) {
+    #loginCards{
+        text-align: center !important;
+    }
+    #signupCards{
+        text-align: center !important;
+
+    }
+
+}

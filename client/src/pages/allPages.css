@@ -1,0 +1,68 @@
+/* css for navs and footer on all pages */
+#navContainerWhite{
+    padding: 0px;
+     padding-Bottom: 0px;
+     justify-content: left;
+}
+#icon{
+    width: 50px;
+    margin-left: 20px;
+}
+.navbar-brand{
+    font-size: 25px; 
+    padding-left: 20px;   
+}
+/* footer */
+footer{
+    margin-top: 2%;
+}
+.card-footer{
+    display: flex; 
+    align-items: center; 
+    max-width: 100%; 
+    height: 65px;
+}
+#footerIcon{
+    margin-left: 20px; 
+    width: 50px;
+}
+#footerBrand{
+    color: white; 
+    font-size: 25px; 
+    font-weight: 400; 
+    text-align: left; 
+    margin-left: 20px;
+}
+#footerHeading{
+    color: white; 
+    margin-left: auto;
+}
+.footerIcon{
+    color: white; 
+    margin-left: 20px;
+}
+.containerCopy{
+    height: 40px;
+}
+.copyHeading{
+    padding-top: 10px; 
+}
+#footerHeadingSmall{
+    margin-left: 20px;
+    color: white;
+}
+.footerIconsSmall{
+    text-align: center;
+}
+
+/* media queries */
+@media only screen and (max-width: 580px ) {
+    #icon{
+        width: 35px;
+        margin-left: 10px;
+    }
+    #navWhite{
+        padding: .2rem;
+    }
+
+}

@@ -1,0 +1,70 @@
+.dashContainer {
+  width: 80%;
+  margin: auto;
+}
+.dashHeading {
+  text-align: center;
+  font-size: 25px;
+}
+.dashP {
+  text-align: center;
+  margin-top: 20px;
+}
+.dashList {
+  text-align: left;
+  margin-left: 330px;
+  margin-bottom: 40px;
+}
+.galleryTitle {
+  text-align: center;
+  font-size: 25px;
+  margin-bottom: 50px;
+}
+.formContainer {
+  background-color: lightgray;
+  max-width: 100%;
+  margin-bottom: 60px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+#titleInput {
+  max-width: 286px;
+}
+.formDash {
+  background-color: white !important;
+}
+.heading {
+  text-align: center;
+  font-size: 25px;
+  margin-top: 10px;
+}
+
+/* media queries */
+@media only screen and (max-width: 780px) {
+  .dashList {
+    margin-left: 100px;
+  }
+  .formDash {
+    max-width: 286px;
+  }
+  .inputImage{
+    display: block;
+  }
+  #imageSection {
+    margin-left: 60px;
+  }
+  .formContainer{
+    padding-left: 200px;
+  }
+}
+@media only screen and (max-width: 580px) {
+  #imageSection {
+    margin-left: 50px;
+  }
+  .formContainer{
+    padding-left: 0px;
+  }
+  .dashList {
+    margin-left: 10px;
+  }
+}
