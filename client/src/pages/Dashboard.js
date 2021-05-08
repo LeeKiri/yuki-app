@@ -9,11 +9,12 @@ import RecordImage from "../components/Cards/Records/RecordImage";
 import RecordNoImg from "../components/Cards/Records/RecordNoImage";
 import Container from "../components/Container/Container";
 import Footer from "../components/Footer/Footer";
+import catImage from "../images/cats/banner/paws.jpg";
+import "./dashboard.css";
 
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-import catImage from "../images/cats/banner/paws.jpg";
 
 const title = "Dashboard";
 const caption =
@@ -54,19 +55,14 @@ const Dashboard = () => {
       <NavbarWhite />
       <Banner title={title} caption={caption} url={catImage} />
       <DashboardIntro name={userName} />
-      <Toggle value={radio} handleRadioChange={handleRadioChange} />
+      <Toggle catName={catName} value={radio} handleRadioChange={handleRadioChange} />
       {radio === "visual" ? (
-        <ImageForm catName={catName} userId={userId} />
+        <ImageForm userId={userId} />
       ) : (
-        <TextRecordForm catName={catName} userId={userId} />
+        <TextRecordForm userId={userId} />
       )}
 
-      <h5
-        style={{
-          textAlign: "center",
-          fontSize: "25px",
-          marginBottom: "50px",
-        }}
+      <h5 className="galleryTitle"
       >
         Gallery
       </h5>

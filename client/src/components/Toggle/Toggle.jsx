@@ -1,11 +1,15 @@
-const Toggle = ({ handleRadioChange, value }) => {
+const Toggle = ({ handleRadioChange, value, catName }) => {
   return (
     <>
       <div className="row">
         <div
-          style={{ textAlign: "center", marginBottom: "20px" }}
+          style={{ textAlign: "center", padding: "15px", backgroundColor: "lightgray" }}
           className="col-lg-12"
         >
+           <h4 className="heading"
+              >
+                Create A Record For {catName}
+              </h4>
           <form value={value} onChange={handleRadioChange}>
             <div className="form-check form-check-inline">
               <input
