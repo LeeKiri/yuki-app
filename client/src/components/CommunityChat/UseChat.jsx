@@ -4,7 +4,7 @@ import socketIOClient from "socket.io-client";
 const newChatMessage = "newChatMessage";
 const newUser = "newUser";
 
-const SOCKET_SERVER_URL = "http://localhost:8080";
+const SOCKET_SERVER_URL = process.env.SOCKET_SERVER_URL || "http:/localhost:8080/";
 
 const useChat = ({ roomId }) => {
   const [messages, setMessages] = useState([]);
