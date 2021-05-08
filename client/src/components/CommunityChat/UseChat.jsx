@@ -4,8 +4,6 @@ import socketIOClient from "socket.io-client";
 const newChatMessage = "newChatMessage";
 const newUser = "newUser";
 
-const SOCKET_SERVER_URL = process.env.SOCKET_SERVER_URL || "http:/localhost:8080/";
-
 const useChat = ({ roomId }) => {
   const [messages, setMessages] = useState([]);
   const [users, setUsers] = useState([]);
@@ -16,7 +14,7 @@ const useChat = ({ roomId }) => {
     console.log(roomId, "in useffect");
 
     // this creates the websocket connection
-    socketRef.current = socketIOClient(SOCKET_SERVER_URL, {
+    socketRef.current = socketIOClient({
       query: { roomId },
     });
 
