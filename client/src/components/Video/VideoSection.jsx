@@ -1,4 +1,4 @@
-import "./video.css";
+import "../../pages/video.css";
 
 const VideoCard = ({ vidData: video }) => {
   return (

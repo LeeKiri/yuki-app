@@ -9,6 +9,8 @@ import cardImage from "../images/cats/cat3.jpg";
 import Container from "../components/Container/Container";
 import Footer from "../components/Footer/Footer";
 
+import "./community.css";
+
 const title = "Community";
 const caption =
   "Ask questions, find local vets and connect with people on a similar journey ";
