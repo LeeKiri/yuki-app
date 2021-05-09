@@ -12,7 +12,6 @@ const NavbarBlack = () => {
   return (
     <>
    <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
-        <div className="container">
             <div className="collapse navbar-collapse" id="navbarNav">
       <ul className="navbar-nav ml-auto">
         <li className="nav-item">
@@ -29,7 +28,6 @@ const NavbarBlack = () => {
         </li>
       </ul>
     </div>
-  </div>
 </nav>
 </>
   );
