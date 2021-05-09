@@ -2,7 +2,7 @@ const Container = (props) => {
   return (
     <>
         <div className="container"
-        style={{marginBottom: "300px"}}
+        style={{marginBottom: "500px"}}
         >
           <div className="row">
             {props.children}

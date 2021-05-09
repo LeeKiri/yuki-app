@@ -4,27 +4,35 @@ const RecordImg = ({ title, description, date, image }) => {
   return (
     <>
       <div
-        style={{ margin: "auto", width: "80%", marginBottom: "20px" }}
-        className="card"
+        className="card imageCard"
       >
         <div className="row no-gutters">
-          <div className="col-8">
-            <div className="card-header">{title}</div>
+          <div className="col-sm-12 col-md-8">
+            <div className="card-header imgSmallHead">{title}</div>
             <div className="card-body">
-              <p className="card-text">{description}</p>
+              <p className="imageTxt card-text">{description}</p>
               <footer>
                 <small>
                   <Moment format="DD-MM-YYYY">{date}</Moment>
                 </small>
+            <img
+              src={image}
+              alt="thumbnail record"
+              className="
+              d-md-none
+              img-thumbnail img-fluid imageimgSmall"
+            />
+
               </footer>
             </div>
           </div>
-          <div className="col-4">
+          <div className="col-sm-1 col-md-4 d-none d-md-block">
             <img
-              style={{ width: "200px", float: "right"}}
               src={image}
               alt="thumbnail record"
-              className="img-thumbnail img-fluid"
+              className="
+              
+              img-thumbnail img-fluid imageimg"
             />
           </div>
         </div>

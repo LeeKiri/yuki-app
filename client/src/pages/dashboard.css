@@ -41,6 +41,28 @@
 #btnDiv{
   margin-top: 20px;
 }
+
+/* cards*/
+.imageCard{
+  margin: auto; 
+  width: 80%; 
+  margin-bottom: 20px;
+}
+.imageimg{
+  width: 200px; 
+  float: right;
+}
+.imageTxt{
+  text-align: left;
+}
+.noImageCard{
+  margin: auto; 
+  width: 80%; 
+  margin-bottom: 20px; 
+}
+.noImageText{
+  text-align: left;
+}
 /* media queries */
 @media only screen and (max-width: 780px) {
   .dashList {
@@ -57,6 +79,15 @@
   }
   .formContainer{
     padding-left: 200px;
+  }
+  .imageimgSmall{
+    min-width: 200px;
+    float: left;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+  .imgSmallHead{
+    width: 100%;
   }
 }
 @media only screen and (max-width: 580px) {
