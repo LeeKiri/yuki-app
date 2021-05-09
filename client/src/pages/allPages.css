@@ -1,8 +1,7 @@
 /* css for navs and footer on all pages */
 #navContainerWhite{
-    padding: 0px;
-     padding-Bottom: 0px;
      justify-content: left;
+     padding-right: 0px !important;
 }
 #icon{
     width: 50px;
@@ -10,7 +9,14 @@
 }
 .navbar-brand{
     font-size: 25px; 
-    padding-left: 20px;   
+    padding-left: 20px;  
+    font-size: 25px !important; 
+}
+#dropdownMenuButton{
+    width: 160px;
+    background-color: white;
+    color: black;
+    border: none;
 }
 /* footer */
 footer{

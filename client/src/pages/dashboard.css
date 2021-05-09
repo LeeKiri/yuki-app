@@ -38,7 +38,9 @@
   font-size: 25px;
   margin-top: 10px;
 }
-
+#btnDiv{
+  margin-top: 20px;
+}
 /* media queries */
 @media only screen and (max-width: 780px) {
   .dashList {
