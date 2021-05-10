@@ -1,25 +1,23 @@
 import { useEffect, useRef, useState } from "react";
 import socketIOClient from "socket.io-client";
 
-const newChatMessage = "newChatMessage";
-const newUser = "newUser";
+const NEW_CHAT_MESSAGE_EVENT = "NEW_CHAT_MESSAGE_EVENT";
+const NEW_USER_EVENT = "NEW_USER_EVENT";
+const SOCKET_SERVER_URL = "http://localhost:8080";
 
 const useChat = ({ roomId }) => {
   const [messages, setMessages] = useState([]);
   const [users, setUsers] = useState([]);
-  console.log(roomId, "in useChat");
   const socketRef = useRef();
 
   useEffect(() => {
-    console.log(roomId, "in useffect");
-
     // this creates the websocket connection
-    socketRef.current = socketIOClient({
+    socketRef.current = socketIOClient(SOCKET_SERVER_URL, {
       query: { roomId },
     });
 
     // set up to listen for incoming messages
-    socketRef.current.on(newChatMessage, (data) => {
+    socketRef.current.on(NEW_CHAT_MESSAGE_EVENT, (data) => {
       console.log(data, "data");
       const incomingMessage = {
         ...data,
@@ -36,7 +34,7 @@ const useChat = ({ roomId }) => {
     });
 
     // setup to listen for new users
-    socketRef.current.on(newUser, (data) => {
+    socketRef.current.on(NEW_USER_EVENT, (data) => {
       console.log("user data", data);
       const incomingUser = {
         ...data,
@@ -53,7 +51,7 @@ const useChat = ({ roomId }) => {
 
   //send new user to server
   const sendNewUser = (user) => {
-    socketRef.current.emit(newUser, {
+    socketRef.current.emit(NEW_USER_EVENT, {
       user: user,
       senderId: socketRef.current.id,
     });
@@ -61,7 +59,7 @@ const useChat = ({ roomId }) => {
 
   //send message to server which is then broadcast to chatroom
   const sendMessage = (messageBody, user) => {
-    socketRef.current.emit(newChatMessage, {
+    socketRef.current.emit(NEW_CHAT_MESSAGE_EVENT, {
       body: messageBody,
       senderId: socketRef.current.id,
       user: user,

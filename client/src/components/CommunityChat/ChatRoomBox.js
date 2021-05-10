@@ -16,8 +16,10 @@ const ChatRoomBox = ({ userName }) => {
     setUsersList(users);
   }, [users]);
 
-  useEffect(() => {
-    if (userName) sendNewUser(userName);
+  useEffect((roomId) => {
+    if (userName) 
+    var newUser = {name: userName, roomId: roomId }
+    sendNewUser(newUser);
   }, [userName]);
 
   const handleNewMessageChange = (e) => {
@@ -132,22 +134,22 @@ const ChatRoomBox = ({ userName }) => {
                 <BlackButtonClick title="Leave Chat" />
               </Link>
             </div>
-            {usersList === null ? (
+            {usersList ? (
               <>
-                <h6 style={{ marginTop: "20px" }}>Members</h6>
+                <h6 style={{ marginTop: "20px"}}>Members Online</h6>
                 <div
                   style={{
                     backgroundColor: "white",
                     height: "fit-content",
-                    margin: "50px",
                     borderRadius: "5px",
                     textAlign: "center",
+                    width: "60%",
                   }}
                 >
                   <ul className="list-unstyled">
                     {usersList.map((data, i) => (
                       <li style={{ textAlign: "left", padding: "5px" }} key={i}>
-                        {data}
+                        {data.name}
                       </li>
                     ))}
                   </ul>

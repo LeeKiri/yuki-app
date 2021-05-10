@@ -67,8 +67,8 @@ mongoose.connect(
 );
 
 //socket.io connection
-const newChatMessage = "newChatMessage";
-const newUser = "newUser";
+const NEW_CHAT_MESSAGE_EVENT = "NEW_CHAT_MESSAGE_EVENT";
+const NEW_USER_EVENT = "NEW_USER_EVENT";
 const users = [];
 
 const getUsers = (roomId) => {
@@ -97,20 +97,21 @@ io.on("connection", (socket) => {
     io.to(roomId).emit("userList", getUsers(roomId));
   };
 
-  socket.on(newChatMessage, (data) => {
-    io.in(roomId).emit(newChatMessage, data);
+  socket.on(NEW_CHAT_MESSAGE_EVENT, (data) => {
+    io.in(roomId).emit(NEW_CHAT_MESSAGE_EVENT, data);
     console.log(data, "server data 1");
   });
 
-  socket.on(newUser, (data) => {
+  socket.on(NEW_USER_EVENT, (data) => {
     users.push(data);
-    console.log(newUser, data, "server data 2");
+    console.log(data, "data");
     console.log(users, "users");
     emitUsers();
   });
 
   socket.on("disconnect", () => {
     socket.leave(roomId);
+    // users = users.filter()
     console.log("user disconnected");
     emitUsers();
   });
