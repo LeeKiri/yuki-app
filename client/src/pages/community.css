@@ -1,0 +1,82 @@
+/* card */
+#communityCard {
+  width: 18rem;
+  display: inline-block;
+  vertical-align: top;
+  margin: 20px;
+  margin-bottom: 200px;
+  -moz-box-shadow: inset 0 0 10px #000000;
+  -webkit-box-shadow: inset 0 0 10px #000000;
+  box-shadow: inset 0 0 10px #000000;
+}
+#cardTitle {
+  font-size: 30px;
+  text-shadow: 1px 1px 2px black, 0 0 25px darkgrey, 1px 1px 2px black;
+  color: white;
+  padding-top: 40px;
+  text-align: center;
+}
+#cardList {
+  text-align: left;
+}
+/* box */
+.chatBox {
+  background-color: lightgray;
+  margin-left: 100px;
+  margin-top: 20px;
+  min-width: 80%;
+  height: fit-content;
+  align-content: center;
+  -moz-box-shadow: inset 0 0 10px #000000;
+  -webkit-box-shadow: inset 0 0 10px #000000;
+  box-shadow: inset 0 0 10px #000000;
+}
+#boxTitle {
+    text-align: center;
+    padding-top: 50px;
+}
+#boxDiv {
+    display: flex;
+    justify-content: center;
+    padding-top: 40px;
+}
+#boxLabel {
+    padding: 10px;
+    font-size: 20px;
+}
+.roomInput {
+    width: 150px;
+    padding: 15px;
+    border: none;
+    height: 50px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+#btnDiv {
+margin-bottom: 40px;
+  display: flex;
+  justify-content: center;
+  /* padding-top: 20px; */
+}
+@media only screen and (max-width: 780px) {
+  #communityCard {
+    width: 60%;
+  }
+  .chatBox{
+      width: 80%;
+      margin-left: 0px;
+    }
+}
+@media only screen and (max-width: 780px) {
+    #boxTitle {
+        padding: 5px;
+        margin-top: 10px;
+    }
+    .chatBox{
+        width: 100%;
+        margin-left: 0px;
+      }
+    #communityCard {
+      width: 100%;
+    }
+
+}

@@ -1,0 +1,14 @@
+iframe{
+    padding: 10px 10px;
+}
+@media only screen and (max-width: 780px) {
+iframe{
+    max-width: 100%;
+}
+}
+@media only screen and (max-width: 580px) {
+    
+    iframe{
+        max-width: 100%;
+    }
+}

@@ -65,13 +65,13 @@ app.post("/api/upload/text", isAuthenticated, (req, res, cb) => {
     .catch((err) => cb(err));
 });
 
-// Endpoint to get current user
+// Endpoint to get current user and records of user
 app.get("/api/user", (req, res) => {
   if (!req.user) {
     res.json(null);
   } else {
     User.findById({ _id: req.user.id })
-      .populate("images")
+      .populate({ path: "images", options: { sort: { date: -1 } } })
       .then((data) => {
         res.json(data);
       });
