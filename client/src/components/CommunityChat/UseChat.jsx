@@ -3,7 +3,7 @@ import socketIOClient from "socket.io-client";
 
 const NEW_CHAT_MESSAGE_EVENT = "NEW_CHAT_MESSAGE_EVENT";
 const NEW_USER_EVENT = "NEW_USER_EVENT";
-const SOCKET_SERVER_URL = "http://localhost:8080";
+// const SOCKET_SERVER_URL = "http://localhost:8080";
 
 const useChat = ({ roomId }) => {
   const [messages, setMessages] = useState([]);
@@ -12,7 +12,8 @@ const useChat = ({ roomId }) => {
 
   useEffect(() => {
     // this creates the websocket connection
-    socketRef.current = socketIOClient(SOCKET_SERVER_URL, {
+    // add SOCKET_SERVER_URL, when testing locally
+    socketRef.current = socketIOClient({
       query: { roomId },
     });
 
