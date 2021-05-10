@@ -89,6 +89,9 @@
   .imgSmallHead{
     width: 100%;
   }
+  #textRecordbtnDiv{
+    margin-left: 50px;
+  }
 }
 @media only screen and (max-width: 580px) {
   #imageSection {
@@ -96,6 +99,7 @@
   }
   .formContainer{
     padding-left: 0px;
+    min-width: 100%;
   }
   .dashList {
     margin-left: 10px;

@@ -30,7 +30,7 @@ const CommunityChat = () => {
             </div>
           </div>
           <div className="row">
-            <div id="boxDiv" className="col-lg-12 form-container">
+            <div id="boxDiv" className="col-lg-12 d-flex form-container">
               <form onSubmit={handleSubmit}>
                 <label id="boxLabel" htmlFor="cars">
                   Choose a Room:

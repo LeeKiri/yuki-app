@@ -1,8 +1,8 @@
 /* eslint-disable camelcase */
-const { Image, User } = require("../models/index");
+const { Image, User } = require("../../models/index");
 const multer = require("multer");
 const imageRouter = require("express").Router();
-const isAuthenticated = require("../config/isAuthenticated");
+const isAuthenticated = require("../../config/isAuthenticated");
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -30,7 +30,7 @@ const upload = multer({
 });
 
 imageRouter.post(
-  "/api/upload",
+  "/upload",
   isAuthenticated,
   upload.single("imageData"),
   (req, res, cb) => {

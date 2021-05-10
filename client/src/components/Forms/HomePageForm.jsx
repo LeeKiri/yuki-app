@@ -13,7 +13,7 @@ const HomePageForm = () => {
               to set up your account.
             </p>
             <div className="row">
-              <div id="btnDiv" className="col-lg-12">
+              <div id="homeBtnDiv" className="col-lg-12">
                 <Link to="/signup">
                   <WhiteButton title="Sign-up" />
                 </Link>

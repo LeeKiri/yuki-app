@@ -12,18 +12,18 @@ const NavbarBlack = () => {
   return (
     <>
    <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
-            <div className="collapse navbar-collapse" id="navbarNav">
-      <ul className="navbar-nav ml-auto">
-        <li className="nav-item">
-          <Link className="nav-link active" aria-current="page" to="/signup">Sign-up</Link>
+            <div className="navbar-collapse blackLIs" id="navbarNav">
+      <ul className="navbar-nav ml-auto list-group list-group-horizontal blackLIs">
+        <li className="nav-item pl-3">
+          <Link className="nav-link " aria-current="page" to="/signup">Sign-up</Link>
         </li>
-        <li className="nav-item">
+        <li className="nav-item pl-3">
           <Link className="nav-link" to="/login">Login</Link>
         </li>
-        <li className="nav-item">
+        <li className="nav-item pl-3">
           <HashLink className="nav-link" to="/#aboutSection">About</HashLink>
         </li>
-        <li className="nav-item">
+        <li className="nav-item pl-3">
           <Link className="nav-link" onClick={logout} >Logout</Link>
         </li>
       </ul>

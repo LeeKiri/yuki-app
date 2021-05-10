@@ -4,7 +4,7 @@ const Toggle = ({ handleRadioChange, value, catName }) => {
       <div className="row">
         <div
           style={{ textAlign: "center", padding: "15px", backgroundColor: "lightgray" }}
-          className="col-lg-12"
+          className="col-12"
         >
            <h4 className="heading"
               >

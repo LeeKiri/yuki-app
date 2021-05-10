@@ -1,11 +1,11 @@
 /* eslint-disable camelcase */
-const passport = require("../config/configLocalStrategy");
-const isAuthenticated = require("../config/isAuthenticated");
-const app = require("express").Router();
-const { User, Image } = require("../models/index");
+const passport = require("../../config/configLocalStrategy");
+const isAuthenticated = require("../../config/isAuthenticated");
+const router = require("express").Router();
+const { User, Image } = require("../../models/index");
 
 // Register User
-app.post("/api/signup", (req, res) => {
+router.post("/signup", (req, res) => {
   const password = req.body.password;
   const password2 = req.body.password2;
 
@@ -30,7 +30,7 @@ app.post("/api/signup", (req, res) => {
 });
 
 // Endpoint to login
-app.post("/api/login", passport.authenticate("local"), (req, res) => {
+router.post("/login", passport.authenticate("local"), (req, res) => {
   const loginUser = {
     email: req.body.email,
     password: req.body.password,
@@ -40,7 +40,7 @@ app.post("/api/login", passport.authenticate("local"), (req, res) => {
 });
 
 //upload a text record
-app.post("/api/upload/text", isAuthenticated, (req, res, cb) => {
+router.post("/upload/text", isAuthenticated, (req, res, cb) => {
   console.log(req.body, "req");
   const newRecord = new Image({
     title: req.body.title,
@@ -66,7 +66,7 @@ app.post("/api/upload/text", isAuthenticated, (req, res, cb) => {
 });
 
 // Endpoint to get current user and records of user
-app.get("/api/user", (req, res) => {
+router.get("/user", (req, res) => {
   if (!req.user) {
     res.json(null);
   } else {
@@ -79,9 +79,9 @@ app.get("/api/user", (req, res) => {
 });
 
 // Endpoint to logout
-app.get("/logout", (req, res) => {
+router.get("/logout", (req, res) => {
   req.logout();
   res.send(null);
 });
 
-module.exports = app;
+module.exports = router;

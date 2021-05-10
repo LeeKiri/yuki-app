@@ -47,24 +47,19 @@ app.use(passport.session());
 app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
 
 //routes set
-app.use(require("./routes/apiRoutes.js"));
-app.use(require("./routes/imageRoute.js"));
+app.use(require("./routes"));
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
 //mongoose connection
-mongoose.connect(
-  process.env.MONGODB_URI ||
-    "mongodb+srv://lee:easy111@cluster0.n6art.mongodb.net/yuki?retryWrites=true&w=majority",
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-    useFindAndModify: false,
-  }
-);
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/yuki", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false,
+});
 
 //socket.io connection
 const NEW_CHAT_MESSAGE_EVENT = "NEW_CHAT_MESSAGE_EVENT";

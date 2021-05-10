@@ -1,0 +1,80 @@
+#chatContainer {
+  width: 100%;
+  height: fit-content;
+  background-color: lightgray;
+  -moz-box-shadow: inset 0 0 10px #000000;
+  -webkit-box-shadow: inset 0 0 10px #000000;
+  box-shadow: inset 0 0 10px #000000;
+  margin-bottom: 200px;
+  margin: auto;
+  padding-bottom: 50px;
+}
+.roomName {
+  padding-left: 50px;
+  padding-top: 50px;
+}
+#chatHeading {
+  padding-left: 50px;
+}
+#chatbtnDiv {
+  padding-left: 50px;
+  padding-bottom: 10px;
+}
+.leavebtnDiv {
+  margin-top: 50px;
+  margin-right: 80px;
+}
+.newMessageInputField {
+  margin-left: 50px;
+  padding: 20px;
+  width: 75%;
+}
+.messagesList {
+  list-style-type: none;
+}
+#chatMessage {
+  background-color: #1a75ff;
+  padding: 10px;
+  color: white;
+  border-radius: 10px;
+  margin: 8px;
+  font-size: 15px;
+  font: yserif;
+  margin-right: 20px;
+  width: fit-content;
+  letter-spacing: 0.1em;
+}
+#otherUsersMessage {
+  background-color: #009973;
+  padding: 10px;
+  color: white;
+  border-radius: 10px;
+  margin: 8px;
+  font-size: 15px;
+  font: yserif;
+  margin-right: 20px;
+  width: fit-content;
+  letter-spacing: 0.1em;
+}
+.membersHeading {
+  margin-top: 20px;
+}
+.usersDiv {
+  background-color: white;
+  height: fit-content;
+  border-radius: 5px;
+  text-align: center;
+  width: 60%;
+}
+.usersInRoom {
+  text-align: left;
+  padding: 5px;
+}
+@media only screen and (max-width: 780px) {
+  .leaveCol {
+    margin-left: 50px;
+  }
+  .usersDiv {
+    width: 40%;
+  }
+}

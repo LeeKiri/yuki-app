@@ -1,7 +1,8 @@
+import BlackButtonClick from "../Button/BlackButtonClick";
+import "../../pages/chatroom.css";
 /* eslint-disable react-hooks/exhaustive-deps */
 import useChat from "./UseChat";
 import { useState, useEffect } from "react";
-import BlackButtonClick from "../Button/BlackButtonClick";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 
@@ -16,11 +17,13 @@ const ChatRoomBox = ({ userName }) => {
     setUsersList(users);
   }, [users]);
 
-  useEffect((roomId) => {
-    if (userName) 
-    var newUser = {name: userName, roomId: roomId }
-    sendNewUser(newUser);
-  }, [userName]);
+  useEffect(
+    (roomId) => {
+      if (userName) var newUser = { name: userName, roomId: roomId };
+      sendNewUser(newUser);
+    },
+    [userName]
+  );
 
   const handleNewMessageChange = (e) => {
     setNewMessage(e.target.value);
@@ -40,57 +43,29 @@ const ChatRoomBox = ({ userName }) => {
 
   return (
     <>
-      <div
-        className="container"
-        style={{
-          width: "100%",
-          height: "fit-content",
-          backgroundColor: "lightgray",
-          MozBoxShadow: "inset 0 0 10px #000000",
-          WebkitBoxShadow: "inset 0 0 10px #000000",
-          boxShadow: "inset 0 0 10px #000000",
-          marginBottom: "200px",
-          margin: "auto",
-          paddingBottom: "50px",
-        }}
-      >
+      <div className="container" id="chatContainer">
         <div className="row">
           <div className="col-lg-9">
-            <h4
-              className="roomName"
-              style={{ paddingLeft: "50px", paddingTop: "50px" }}
-            >
+            <h4 className="roomName">
               Welcome to the {roomId} chat room {userName}
             </h4>
-            <h5 style={{ paddingLeft: "50px" }}>Please introduce yourself</h5>
+            <h5 id="chatHeading">Please introduce yourself</h5>
             <textarea
               value={newMessage}
               onChange={handleNewMessageChange}
               onKeyPress={handleKeyEnter}
               placeholder="Write your message here...."
               className="newMessageInputField"
-              style={{ marginLeft: "50px", padding: "20px", width: "75%" }}
             />
-            <div style={{ paddingLeft: "50px", paddingBottom: "10px" }}>
+            <div id="chatbtnDiv">
               <BlackButtonClick title="Send" onClick={handleSendMessage} />
             </div>
             <div className="messagesContainer">
-              <ol style={{ listStyleType: "none" }} className="messagesList">
+              <ol className="messagesList">
                 {messages.map((data, i) =>
                   data.user === userName ? (
                     <li
-                      style={{
-                        backgroundColor: "#1a75ff",
-                        padding: "10px",
-                        color: "white",
-                        borderRadius: "10px",
-                        margin: "8px",
-                        fontSize: "15px",
-                        font: "yserif",
-                        marginRight: "20px",
-                        width: "fit-content",
-                        letterSpacing: ".1em",
-                      }}
+                      id="chatMessage"
                       key={i}
                       className={`messageItem ${
                         data.ownedByCurrentUser
@@ -102,23 +77,10 @@ const ChatRoomBox = ({ userName }) => {
                     </li>
                   ) : (
                     <li
-                      style={{
-                        backgroundColor: "#009973",
-                        padding: "10px",
-                        color: "white",
-                        borderRadius: "10px",
-                        margin: "8px",
-                        fontSize: "15px",
-                        font: "yserif",
-                        marginRight: "20px",
-                        width: "fit-content",
-                        letterSpacing: ".1em",
-                      }}
+                      id="otherUsersMessage"
                       key={i}
                       className={`messageItem ${
-                        data.ownedByCurrentUser
-                          ? "myMessage"
-                          : "recievedMessage"
+                        data.ownedByOtherUser ? "myMessage" : "recievedMessage"
                       }`}
                     >
                       {data.user}: {data.body}
@@ -128,29 +90,21 @@ const ChatRoomBox = ({ userName }) => {
               </ol>
             </div>
           </div>
-          <div className="col-lg-3">
-            <div className="btnDiv" style={{ marginTop: "50px", marginRight: "80px" }}>
+          <div className="col-lg-3 leaveCol">
+            <div
+              className="leavebtnDiv"
+            >
               <Link to="/dashboard">
                 <BlackButtonClick title="Leave Chat" />
               </Link>
             </div>
             {usersList ? (
               <>
-                <h6 style={{ marginTop: "20px"}}>Members Online</h6>
-                <div
-                  style={{
-                    backgroundColor: "white",
-                    height: "fit-content",
-                    borderRadius: "5px",
-                    textAlign: "center",
-                    width: "60%",
-                  }}
-                >
-                  <ul className="list-unstyled">
+                <h6 className="membersHeading">Members Online</h6>
+                <div className="usersDiv">
+                  <ul className="list-unstyled usersInRoom">
                     {usersList.map((data, i) => (
-                      <li style={{ textAlign: "left", padding: "5px" }} key={i}>
-                        {data.name}
-                      </li>
+                      <li key={i}>{data.name}</li>
                     ))}
                   </ul>
                 </div>

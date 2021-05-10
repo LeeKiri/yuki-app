@@ -17,8 +17,8 @@ const Banner = (props) => {
                         
                     }}
                     ></div>
-                    <h2 style={{ textShadow: "3px 3px 5px #000000, 3px 3px 5px #000000", paddingBottom: "200px"}}className="carousel-caption">{props.title}</h2>
-                    <p style={{ textShadow: "3px 3px 5px #000000, 3px 3px 5px #000000, 5px 5px 10px #000000", paddingBottom: "120px", fontFamily: "serif", fontSize: "25px"}}className="carousel-caption">{props.caption}</p>
+                    <h2 className="bannerTitle carousel-caption">{props.title}</h2>
+                    <p className="bannerP carousel-caption">{props.caption}</p>
                 </div>
             </div>
      );
