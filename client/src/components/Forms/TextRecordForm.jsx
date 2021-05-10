@@ -42,7 +42,7 @@ const TextRecordForm = ({ catName, userId }) => {
           className="formContainer"
         >
           <div className="row">
-            <div className="col-lg-3">
+            <div className="col-12 col-lg-3"  id="formRow">
               <div className="inputTitle mb-3">
                 <label className="form-label mt-2 ml-5">Title</label>
                 <input
@@ -75,7 +75,7 @@ const TextRecordForm = ({ catName, userId }) => {
                 ></textarea>
               </div>
             </div>
-            <div id="btnDiv" className="col-lg-3">
+            <div id="textRecordbtnDiv" className="col-lg-3">
               <BlackButton title="submit" />
             </div>
           </div>

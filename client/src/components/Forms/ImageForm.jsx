@@ -48,7 +48,7 @@ const ImageForm = ({ userId }) => {
           className="formContainer"
         >
           <div className="row" id="formRow">
-            <div className="col-lg-3 col-12">
+            <div className="col-12 col-lg-3">
               <div className="inputTitle mb-3">
                 <label className="form-label mt-2 ml-5">Title</label>
                 <input

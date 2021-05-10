@@ -1,74 +1,100 @@
 /* css for navs and footer on all pages */
-#navContainerWhite{
-     justify-content: left;
-     padding-right: 0px !important;
+#navContainerWhite {
+  justify-content: left;
+  padding-right: 0px !important;
 }
-#icon{
-    width: 50px;
-    margin-left: 20px;
+#icon {
+  width: 50px;
+  margin-left: 20px;
 }
-.navbar-brand{
-    font-size: 25px; 
-    padding-left: 20px;  
-    font-size: 25px !important; 
+.navbar-brand {
+  font-size: 25px;
+  padding-left: 20px;
+  font-size: 25px !important;
 }
-#dropdownMenuButton{
-    width: 160px;
-    background-color: #f8f9fa!important;
-    color: black;
-    border: none;
+#dropdownMenuButton {
+  width: 160px;
+  background-color: #f8f9fa !important;
+  color: black;
+  border: none;
+}
+/* banners */
+.bannerTitle {
+  text-shadow: 3px 3px 5px #000000, 3px 3px 5px #000000;
+  margin-bottom: 200px;
+}
+.bannerP {
+  text-shadow: 3px 3px 5px #000000, 3px 3px 5px #000000, 5px 5px 10px #000000;
+  margin-bottom: 120px;
+  font-family: serif;
+  font-size: 25px;
 }
 /* footer */
-footer{
-    margin-top: 2%;
+footer {
+  margin-top: 2%;
 }
-.card-footer{
-    display: flex; 
-    align-items: center; 
-    max-width: 100%; 
-    height: 65px;
+.card-footer {
+  display: flex;
+  align-items: center;
+  max-width: 100%;
+  height: 65px;
 }
-#footerIcon{
-    margin-left: 20px; 
-    width: 50px;
+#footerIcon {
+  margin-left: 20px;
+  width: 50px;
 }
-#footerBrand{
-    color: white; 
-    font-size: 25px; 
-    font-weight: 400; 
-    text-align: left; 
-    margin-left: 20px;
+#footerBrand {
+  color: white;
+  font-size: 25px;
+  font-weight: 400;
+  text-align: left;
+  margin-left: 20px;
 }
-#footerHeading{
-    color: white; 
-    margin-left: auto;
+#footerHeading {
+  color: white;
+  margin-left: auto;
 }
-.footerIcon{
-    color: white; 
-    margin-left: 20px;
+.footerIcon {
+  color: white;
+  margin-left: 20px;
 }
-.containerCopy{
-    height: 40px;
+.containerCopy {
+  height: 40px;
 }
-.copyHeading{
-    padding-top: 10px; 
+.copyHeading {
+  padding-top: 10px;
 }
-#footerHeadingSmall{
-    margin-left: 20px;
-    color: white;
+#footerHeadingSmall {
+  margin-left: 20px;
+  color: white;
 }
-.footerIconsSmall{
-    text-align: center;
+.footerIconsSmall {
+  text-align: center;
 }
 
 /* media queries */
-@media only screen and (max-width: 580px ) {
-    #icon{
-        width: 35px;
-        margin-left: 10px;
-    }
-    #navWhite{
-        padding: .2rem;
+/* @media only screen and (max-width: 1030px ) {
+    .blackLIs{
+       margin-right: 20px;
     }
 
+} */
+@media only screen and (max-width: 590px) {
+  #icon {
+    width: 35px;
+    margin-left: 10px;
+  }
+  .bannerTitle {
+    margin-bottom: 280px;
+  }
+  #footerIcon {
+    margin-left: 0px;
+    width: 35px;
+  }
+  #navWhite {
+    padding: 0.2rem;
+  }
+  .blackLIs {
+    margin-left: 35px;
+  }
 }
