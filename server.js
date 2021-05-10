@@ -61,7 +61,7 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/yuki", {
   useFindAndModify: false,
 });
 
-//socket.io connection
+//socket.io connection and functionality
 const NEW_CHAT_MESSAGE_EVENT = "NEW_CHAT_MESSAGE_EVENT";
 const NEW_USER_EVENT = "NEW_USER_EVENT";
 const users = [];
@@ -71,15 +71,13 @@ const getUsers = (roomId) => {
   if (clients) {
     const clientArr = Array.from(clients);
     const newList = clientArr.map((arr) => {
-      const test = users.filter((user) => user.senderId === arr);
+      const filteredList = users.filter((user) => user.senderId === arr);
       // eslint-disable-next-line array-callback-return
-      if (test.length === 0) {
+      if (filteredList.length === 0) {
         return;
       }
-      console.log(test, "test");
-      return test[0].user;
+      return filteredList[0].user;
     });
-    console.log(newList);
     return newList;
   }
 };
@@ -94,20 +92,15 @@ io.on("connection", (socket) => {
 
   socket.on(NEW_CHAT_MESSAGE_EVENT, (data) => {
     io.in(roomId).emit(NEW_CHAT_MESSAGE_EVENT, data);
-    console.log(data, "server data 1");
   });
 
   socket.on(NEW_USER_EVENT, (data) => {
     users.push(data);
-    console.log(data, "data");
-    console.log(users, "users");
     emitUsers();
   });
 
   socket.on("disconnect", () => {
     socket.leave(roomId);
-    // users = users.filter()
-    console.log("user disconnected");
     emitUsers();
   });
 });

@@ -1,3 +1,4 @@
+// routes for visual record on dashboard page
 /* eslint-disable camelcase */
 const { Image, User } = require("../../models/index");
 const multer = require("multer");

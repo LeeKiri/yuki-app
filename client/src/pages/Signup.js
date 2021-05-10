@@ -15,10 +15,11 @@ const title = "Join Today";
 const caption =
   "In a few simple steps signup to get our members benefits and meet the community";
 
-const Signup = () => {
+const Signup = ({ loggedIn }) => {
+  console.log(loggedIn, "in page")
   return (
     <>
-      <NavbarBlack />
+      <NavbarBlack loggedIn={loggedIn}/>
       <NavbarWhiteBasic />
       <Banner title={title} caption={caption} url={catImage} />
       <Container>
@@ -27,7 +28,7 @@ const Signup = () => {
           <SignupForm />
         </div>
         <div id="signupCards" className="col-lg-4 col-12">
-          <h4 style={{ paddingLeft: "20px", marginBottom: "40px" }}>What do I get?</h4>
+          <h4 className="signupCardTitle">What do I get?</h4>
           {SignupCardContent.map((card, i) => (
             <SignupCards cardData={card} key={i} />
           ))}

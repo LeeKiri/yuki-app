@@ -29,6 +29,7 @@ So that there are less cats misunderstood and euthenaised.
 
 ## Functionality 
 * Create- React-App.
+* Mobile First Responsive Design.
 * Mongooose Schema for MongoDb Atlas upon deploment to Heroku.
 * REST API and JSON.
 * Axios fetch requests from React.
@@ -62,7 +63,6 @@ So that there are less cats misunderstood and euthenaised.
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Future Developments
-* Mobile Design, more responsive features
 * Testing
 * Refactor styling with Tailwind
 * useContext for user details
@@ -77,8 +77,7 @@ Erin Templeton for design input,
 Colin Wirt for helping me trouble shoot,
 My teacher Chris Maxwell,
 My TA Krishna Adikhari,
-My tutor Phillip Loy  and
-Jakub Kozak for the socket.io blog 
+My tutor Phillip Loy
 
 ## Links
 
@@ -109,9 +108,6 @@ Users track their cats journey by creating visual or text records
 
 ![yu5](https://user-images.githubusercontent.com/73642462/117086761-daa3dd00-ad90-11eb-9245-8e01adb00d48.PNG)
 
-Gallery of records entered medium viewport
-
-![yu6](https://user-images.githubusercontent.com/73642462/117086763-dbd50a00-ad90-11eb-938b-427ea5d0d31c.PNG)
 
 Video Library
 
@@ -119,11 +115,19 @@ Video Library
 
 Community Chat - Users read the rules of engagement and choose a chat room
 
-![yu8](https://user-images.githubusercontent.com/73642462/117086766-dd063700-ad90-11eb-9275-11a7f609cef2.PNG)
+![yu17](https://user-images.githubusercontent.com/73642462/117649535-fa913180-b1d2-11eb-9628-2079f65635dc.PNG)
 
-Chat Room
+Chat Room with multiple users logged in chatting
 
-![yu9](https://user-images.githubusercontent.com/73642462/117086769-dd9ecd80-ad90-11eb-801a-388d9a3411bc.PNG)
+![yu16](https://user-images.githubusercontent.com/73642462/117648841-1516db00-b1d2-11eb-9356-9f7517900c3b.PNG)
+
+Responsive View Ports
+
+![yu19](https://user-images.githubusercontent.com/73642462/117649539-fc5af500-b1d2-11eb-8e9e-b67f199c55bd.PNG)
+![yu18](https://user-images.githubusercontent.com/73642462/117649537-fbc25e80-b1d2-11eb-8b34-3238eaf34342.PNG)
+
+![yu6](https://user-images.githubusercontent.com/73642462/117086763-dbd50a00-ad90-11eb-938b-427ea5d0d31c.PNG)
+
 
 ## Planning
 

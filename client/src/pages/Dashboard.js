@@ -20,7 +20,7 @@ const title = "Dashboard";
 const caption =
   "Upload images to track significant events along your journey together.";
 
-const Dashboard = () => {
+const Dashboard = ({ loggedIn }) => {
   const [userName, setUsername] = useState();
   const [catName, setCatname] = useState();
   const [userId, setUserId] = useState();
@@ -51,7 +51,7 @@ const Dashboard = () => {
 
   return (
     <>
-      <NavbarBlack />
+      <NavbarBlack  loggedIn={loggedIn}/>
       <NavbarWhite />
       <Banner title={title} caption={caption} url={catImage} />
       <DashboardIntro name={userName} />

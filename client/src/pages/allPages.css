@@ -73,12 +73,7 @@ footer {
 }
 
 /* media queries */
-/* @media only screen and (max-width: 1030px ) {
-    .blackLIs{
-       margin-right: 20px;
-    }
 
-} */
 @media only screen and (max-width: 590px) {
   #icon {
     width: 35px;
@@ -94,7 +89,5 @@ footer {
   #navWhite {
     padding: 0.2rem;
   }
-  .blackLIs {
-    margin-left: 35px;
-  }
+  
 }

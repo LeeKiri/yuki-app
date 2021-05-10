@@ -26,10 +26,10 @@ const cardGuidelines = [
   "The views expressed in the chat room are those of members of the public and are not necessarily those of Yuki.com.",
 ];
 
-const Community = () => {
+const Community = ({ loggedIn }) => {
   return (
     <>
-      <NavbarBlack />
+      <NavbarBlack  loggedIn={loggedIn}/>
       <NavbarWhite />
       <Banner title={title} caption={caption} url={catImage} />
       <CommunityIntro />

@@ -1,4 +1,5 @@
 import NavbarWhiteBasic from "../components/Navbar/NavbarWhiteBasic";
+import NavbarWhite from "../components/Navbar/NavbarWhite";
 import NavbarBlack from "../components/Navbar/NavbarBlack";
 import Banner from "../components/Banner/Banner";
 import catImage from "../images/cats/banner/cat4.jpg";
@@ -14,11 +15,12 @@ import "./home.css";
 const title = "Welcome To Yuki!";
 const caption = "A tool to support you through your cat adoption. ";
 
-const Home = () => {
+const Home = ({ loggedIn }) => {
+  console.log(loggedIn, "home")
   return (
     <>
-      <NavbarBlack />
-      <NavbarWhiteBasic />
+      <NavbarBlack loggedIn={loggedIn} />
+      {loggedIn ? (<NavbarWhite />) : (<NavbarWhiteBasic />)}
       <Banner title={title} caption={caption} url={catImage} />
       <HomeIntro />
       <div id="containerDiv" className="container">

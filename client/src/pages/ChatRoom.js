@@ -11,7 +11,7 @@ import axios from "axios";
 
 const title = "Community";
 
-const ChatRoom = () => {
+const ChatRoom = ({ loggedIn }) => {
   const [userName, setUserName] = useState();
 
 useEffect(() => {
@@ -29,7 +29,7 @@ useEffect(() => {
   };
   return (
     <>
-      <NavbarBlack />
+      <NavbarBlack  loggedIn={loggedIn}/>
       <NavbarWhite />
       <Banner title={title} url={catImage} />
       <Container>
