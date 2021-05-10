@@ -1,4 +1,3 @@
-import "./App.css";
 import Home from "./pages/Home";
 import Community from "./pages/Community";
 import Video from "./pages/Video";
@@ -37,41 +36,41 @@ function App() {
       <div className="App">
         <Switch>
           <Route path="/signup">
-            <Signup />
+            <Signup loggedIn={isLoggedin}/>
           </Route>
           <Route path="/login">
-            <Login />
+            <Login loggedIn={isLoggedin} />
           </Route>
           <Route path="/dashboard">
             {isLoggedin ? (
-              <Dashboard />
+              <Dashboard loggedIn={isLoggedin} />
             ) : (
                 <Login />
             )}
           </Route>
           <Route path="/video">
             {isLoggedin ? (
-              <Video />
+              <Video loggedIn={isLoggedin} />
             ) : (
-                <Login />
+                <Login loggedIn={isLoggedin} />
             )}
           </Route>
           <Route path="/community">
             {isLoggedin ? (
-              <Community />
+              <Community loggedIn={isLoggedin} />
             ) : (
-                <Login />
+                <Login loggedIn={isLoggedin} />
             )}
           </Route>
           <Route path="/chatroom/:roomId">
             {isLoggedin ? (
-              <ChatRoom />
+              <ChatRoom loggedIn={isLoggedin} />
             ) : (
-                <Login />
+                <Login loggedIn={isLoggedin} />
             )}
           </Route>
           <Route exact path="/">
-            <Home />
+            <Home loggedIn={isLoggedin} />
           </Route>
         </Switch>
       </div>

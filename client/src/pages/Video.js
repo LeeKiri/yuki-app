@@ -10,10 +10,10 @@ import Container from "../components/Container/Container";
 const title = "Video Library"
 const caption = "Advice from cat specialists to help your adoption go smoothly."
 
-const Video = () => {
+const Video = ({ loggedIn }) => {
     return ( 
         <>
-        <NavbarBlack />
+        <NavbarBlack  loggedIn={loggedIn} />
         <NavbarWhite />
         <Banner title={title} caption={caption} url={catImage} />
         <Container >

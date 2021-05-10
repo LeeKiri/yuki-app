@@ -36,12 +36,10 @@ router.post("/login", passport.authenticate("local"), (req, res) => {
     password: req.body.password,
   };
   res.send(loginUser);
-  console.log(loginUser, " authenticated");
 });
 
 //upload a text record
 router.post("/upload/text", isAuthenticated, (req, res, cb) => {
-  console.log(req.body, "req");
   const newRecord = new Image({
     title: req.body.title,
     description: req.body.description,
@@ -51,7 +49,6 @@ router.post("/upload/text", isAuthenticated, (req, res, cb) => {
   newRecord
     .save()
     .then((result) => {
-      console.log(result);
       User.findByIdAndUpdate(
         { _id: req.user._id },
         { $push: { images: result._id } }

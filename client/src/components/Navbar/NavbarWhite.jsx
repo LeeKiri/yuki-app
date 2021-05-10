@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import CatIcon from "../../images/catblue.png";
 
 const NavbarWhite = () => {
@@ -12,28 +12,33 @@ const NavbarWhite = () => {
           <div className="collapse navbar-collapse" id="navbarNav"></div>
           <ul className="navbar-nav ml-auto">
             <li className="nav-item">
-              <Link className="nav-link" to="/">
+              <NavLink className="nav-link" activeClassName="active" exact to="/">
                 Home
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <Link
-                className="nav-link active"
+              <NavLink
+                activeClassName="active"
+                className="nav-link"
                 aria-current="page"
                 to="/dashboard"
               >
                 Dashboard
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/video">
+              <NavLink className="nav-link" activeClassName="active" to="/video">
                 Video Library
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/community">
+              <NavLink
+                className="nav-link"
+                activeClassName="active"
+                to="/community"
+              >
                 Community
-              </Link>
+              </NavLink>
             </li>
           </ul>
         </div>
@@ -58,28 +63,37 @@ const NavbarWhite = () => {
             </button>
             <ul className="dropdown-menu dropdown-menu-end">
               <li>
-                <Link className="dropdown-item" to="/">
+                <NavLink className="dropdown-item" activeClassName="active" exact to="/">
                   Home
-                </Link>
+                </NavLink>
               </li>
               <li>
-                <Link
+                <NavLink
+                  activeClassName="active"
                   className="dropdown-item"
                   aria-current="page"
                   to="/dashboard"
                 >
                   Dashboard
-                </Link>
+                </NavLink>
               </li>
               <li>
-                <Link className="dropdown-item" to="/video">
+                <NavLink
+                  className="dropdown-item"
+                  activeClassName="active"
+                  to="/video"
+                >
                   Video Library
-                </Link>
+                </NavLink>
               </li>
               <li>
-                <Link className="dropdown-item" to="/community">
+                <NavLink
+                  className="dropdown-item"
+                  activeClassName="active"
+                  to="/community"
+                >
                   Community
-                </Link>
+                </NavLink>
               </li>
             </ul>
           </div>

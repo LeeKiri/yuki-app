@@ -9,6 +9,10 @@
     margin: auto;
     margin-bottom: 50px;
 }
+.signupCardTitle{
+    padding-left: 20px; 
+    margin-bottom: 40px;
+}
 
 /* login page */
 .login-form{

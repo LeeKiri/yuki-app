@@ -14,10 +14,10 @@ import "./login-signup.css";
 const title = "Login";
 const caption = "Welcome Back!";
 
-const Login = () => {
+const Login = ({ loggedIn }) => {
   return (
     <>
-      <NavbarBlack />
+      <NavbarBlack loggedIn={loggedIn}/>
       <NavbarWhiteBasic />
       <Banner title={title} caption={caption} url={catImage} />
       <Container>
