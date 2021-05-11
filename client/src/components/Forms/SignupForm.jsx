@@ -1,6 +1,7 @@
 import BlackButton from "../Button/BlackButton";
 import axios from "axios";
 import { useState } from "react";
+import Alert from "react-bootstrap/Alert";
 import "../../pages/login-signup.css";
 
 const SignupForm = () => {
@@ -10,6 +11,7 @@ const SignupForm = () => {
   const [password2, setPassword2] = useState();
   const [catName, setCatname] = useState();
   const [adoptionDate, setAdoptionDate] = useState();
+  const [show, setShow] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -22,14 +24,23 @@ const SignupForm = () => {
       password2,
     };
 
-    axios.post("/api/signup", user).then((res) => {
-      window.location = "/login";
-    });
+    axios
+      .post("/api/signup", user)
+      .then((res) => {
+        setShow(false)
+        window.location = "/login";
+      })
+      .catch(setShow(true));
   };
   return (
     <>
       <form className="signup-form" onSubmit={handleSubmit}>
         <div className="mb-3">
+          {show && (
+            <Alert show={show} variant="danger" onClose={() => setShow(false)} dismissible>
+              Please check required fields *
+            </Alert>
+          )}
           <label className="form-label">Username *</label>
           <input
             onChange={(e) => setUsername(e.target.value)}

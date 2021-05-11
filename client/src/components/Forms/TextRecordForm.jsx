@@ -1,4 +1,6 @@
 import BlackButton from "../Button/BlackButton";
+import Alert from "react-bootstrap/Alert";
+
 import "../../pages/dashboard.css";
 
 import axios from "axios";
@@ -8,6 +10,8 @@ const TextRecordForm = ({ catName, userId }) => {
   const [title, setTitle] = useState();
   const [description, setDescription] = useState();
   const [date, setDate] = useState();
+  const [showDanger, setShowDanger] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
 
   const uploadText = (e) => {
     let imageFormObj = {
@@ -20,14 +24,13 @@ const TextRecordForm = ({ catName, userId }) => {
       .post("/api/upload/text", imageFormObj)
       .then((data) => {
         if (data.data.success) {
-          alert("file successfully uploaded");
+          setShowSuccess(true)
           //todo: workout how to update records without page reload
           window.location.reload();
         }
       })
       .catch((err) => {
-        alert("error while uploading the file");
-        console.log(err);
+        setShowDanger(true)
       });
   };
 
@@ -81,6 +84,16 @@ const TextRecordForm = ({ catName, userId }) => {
           </div>
         </div>
       </form>
+      {showDanger && (
+            <Alert className="text-center" showDanger={showDanger} variant="danger" onClose={() => setShowDanger(false)} dismissible>
+              There was a problem with the upload
+            </Alert>
+          )}
+      {showSuccess && (
+            <Alert className="text-center" showSuccess={showSuccess} variant="success" onClose={() => setShowSuccess(false)} transition>
+              File uploaded successfully!
+            </Alert>
+          )}
     </>
   );
 };
