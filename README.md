@@ -28,7 +28,7 @@ So that I understand my cats needs and support them to transition into my home s
 So that there are less cats misunderstood and euthenaised. 
 
 ## Functionality 
-* Create- React-App.
+* Create-React-App, useState, useEffect, custom hook, conditional rendering.
 * Mobile First Responsive Design.
 * Mongooose Schema for MongoDb Atlas upon deploment to Heroku.
 * REST API and JSON.
