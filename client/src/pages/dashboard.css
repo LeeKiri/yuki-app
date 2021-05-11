@@ -107,4 +107,7 @@
   .dashList {
     margin-left: 10px;
   }
+  #titleInput {
+    max-width: 286px;
+  }
 }

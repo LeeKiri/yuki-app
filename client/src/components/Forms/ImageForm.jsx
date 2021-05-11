@@ -1,4 +1,5 @@
 import BlackButton from "../Button/BlackButton";
+import Alert from "react-bootstrap/Alert";
 
 import axios from "axios";
 import { useState } from "react";
@@ -9,6 +10,8 @@ const ImageForm = ({ userId }) => {
   const [title, setTitle] = useState();
   const [description, setDescription] = useState();
   const [date, setDate] = useState();
+  const [showDanger, setShowDanger] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
 
   const uploadImage = (e) => {
     let imageFormObj = new FormData();
@@ -26,14 +29,12 @@ const ImageForm = ({ userId }) => {
     })
       .then((data) => {
         if (data.data.success) {
-          alert("file successfully uploaded");
-          //todo: workout how to update records without page reload
+          setShowSuccess(true)
           window.location.reload();
         }
       })
       .catch((err) => {
-        alert("error while uploading the file");
-        console.log(err);
+       setShowDanger(true)
       });
   };
 
@@ -100,6 +101,16 @@ const ImageForm = ({ userId }) => {
           </div>
         </div>
       </form>
+      {showDanger && (
+            <Alert className="text-center" showDanger={showDanger} variant="danger" onClose={() => setShowDanger(false)} dismissible>
+              There was a problem with the upload
+            </Alert>
+          )}
+      {showSuccess && (
+            <Alert className="text-center" showSuccess={showSuccess} variant="success" onClose={() => setShowSuccess(false)} transition>
+              File uploaded successfully!
+            </Alert>
+          )}
     </>
   );
 };
