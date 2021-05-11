@@ -89,5 +89,25 @@ footer {
   #navWhite {
     padding: 0.2rem;
   }
-  
+  .card-footer{
+    height: 50px;
+  }
+  #footerHeading{
+    font-size: smaller;
+  }
+  .footerIcon{
+    size: "md";
+  }
+  .footerIconsSmall{
+    display: flex;
+    justify-content: center;
+    margin-top: 3px;
+  }
+  .copyHeading{
+    font-size: smaller;
+    padding-top: 0px;
+  }
+  .containerCopy{
+    height: 25px;
+  }
 }

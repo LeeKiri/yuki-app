@@ -72,12 +72,7 @@ So that there are less cats misunderstood and euthenaised.
 
 This was the final solo project while studying the Web Development Bootcamp at Monash University.
 
-Thanks to 
-Erin Templeton for design input,
-Colin Wirt for helping me trouble shoot,
-My teacher Chris Maxwell,
-My TA Krishna Adikhari,
-My tutor Phillip Loy
+Thanks to Erin Templeton, Colin Wirt, Chris Maxwell, Krishna Adikhari, and Phillip Loy for all of your support.
 
 ## Links
 

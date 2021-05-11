@@ -82,21 +82,26 @@
 }
 /* mediaqueries */
 @media only screen and (max-width: 1160px) {
-    #homeCardCol{
-        padding-left: 150px;
-        
-    } 
+  #homeCardCol {
+    padding-left: 150px;
+  }
 }
-@media only screen and (max-width: 770px ) {
-    #getStartedDiv{
-        width: 95%;
-        border-radius: 20px;
-    }
-    .imgYuki{
-        max-width: 250px;
-    }
-    #cardDivHome{
-      text-align: center !important;
-
-    }
+@media only screen and (max-width: 770px) {
+  #getStartedDiv {
+    width: 95%;
+    border-radius: 20px;
+  }
+  .imgYuki {
+    max-width: 250px;
+  }
+  #cardDivHome {
+    text-align: center !important;
+  }
+  #aboutSection{
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  .aboutPBig{
+    width: 90%;
+  }
 }
