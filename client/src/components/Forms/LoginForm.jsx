@@ -24,7 +24,7 @@ const LoginForm = () => {
         <div className="mb-3">
         {show && (
             <Alert show={show} variant="danger" onClose={() => setShow(false)} dismissible>
-              Wrong email or password
+              Incorrect email or password
             </Alert>
           )}
           <label className="form-label">Email</label>
@@ -39,7 +39,7 @@ const LoginForm = () => {
           <label className="form-label">Password</label>
           <input
             onChange={(e) => setPassword(e.target.value.trim())}
-            type="text"
+            type="password"
             className="form-control formSign-log"
             placeholder="Enter password"
           />
